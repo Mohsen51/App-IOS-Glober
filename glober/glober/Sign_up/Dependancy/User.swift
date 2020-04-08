@@ -36,8 +36,24 @@ class User: ObservableObject {
     @Published var languages = [UserLanguages]()
     @Published var pictureUrl:String = ""
     @Published var password:String = ""
-    @Published var image: Image?
+    @Published var image: UIImage?
     
+    init(){
+   
+    }
+    
+    func encode_image_base64() -> String {
+        let imageData:NSData = image!.pngData()! as NSData
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        
+        return strBase64
+        
+    }
+    
+    func encode_json() -> Data {
+        let JsonBody = try! JSONSerialization.data(withJSONObject: self.name)
+        return JsonBody
+    }
    
     
 }

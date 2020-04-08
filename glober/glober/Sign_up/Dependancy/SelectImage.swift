@@ -11,12 +11,14 @@ import SwiftUI
 struct SelectImage: View {
     
     @State private var inputImage: UIImage?
+    @State private var displayImage: Image?
     @State private var showingImagePicker = false
     @EnvironmentObject var user:User
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
-        user.image = Image(uiImage: inputImage)
+        user.image = inputImage
+        self.displayImage = Image(uiImage: inputImage)
     }
     
     var body: some View {
@@ -26,7 +28,7 @@ struct SelectImage: View {
                
             
             if user.image != nil {
-                user.image?
+                displayImage?
                  .resizable()
                   .frame(width:150,height:150)
                 .clipShape(Circle())

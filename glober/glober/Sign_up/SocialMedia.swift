@@ -31,10 +31,6 @@ struct SocialMedia: View {
         return false
     }
     
-    func display(){
-        print(1)
-    }
-    
     var body: some View {
         
         NavigationView {

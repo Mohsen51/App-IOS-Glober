@@ -11,11 +11,14 @@ import SwiftUI
 struct Submit: View {
     
     @State var manager = POST()
+    @EnvironmentObject var user:User
     
     let data: [String:String] = ["email":"aaaa","password":"aaaa","UserName":"aaaa"]
     
     init(){
         manager.send_data(body: data,urlparam:"http://212.47.232.226/api/users/8")
+        print(user.encode_json())
+        print(user.encode_image_base64())
     }
    
     var body: some View {
