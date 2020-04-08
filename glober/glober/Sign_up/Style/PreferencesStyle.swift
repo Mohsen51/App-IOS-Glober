@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PreferencesStyle.swift
 //  glober
 //
 //  Created by Antonin Boulnois on 08/04/2020.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PreferencesStyle: View {
     var body: some View {
-        Location()
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct PreferencesStyle_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        PreferencesStyle()
     }
 }
