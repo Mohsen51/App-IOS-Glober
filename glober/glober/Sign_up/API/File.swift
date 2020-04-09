@@ -48,13 +48,12 @@ class POST : ObservableObject  {
         
         URLSession.shared.dataTask(with: request){(data,response,error) in
             guard let receiveData = data else {return}
+            guard let ReceiveResponse = response else {return}
+            guard let ReceiveError = error else {return}
             
+            print(ReceiveResponse)
+            print(ReceiveError)
             
-            let Jsoned = try! JSONDecoder().decode(Request.self, from: receiveData)
-            
-            DispatchQueue.main.async {
-                self.data = Jsoned
-            }
         }.resume()
     }
     

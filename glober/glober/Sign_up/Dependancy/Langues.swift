@@ -73,7 +73,7 @@ struct Langues: View {
                }
            }
             
-            UserLanguagesDisplay(country: 0)
+            UserLanguagesDisplay(country: self.countryList[self.selectedCountry])
                 .frame(height:300)
             
         }

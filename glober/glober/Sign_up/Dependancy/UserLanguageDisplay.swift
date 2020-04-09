@@ -8,10 +8,11 @@
 
 import SwiftUI
 
+
 struct UserLanguagesDisplay: View {
     
-    let listLanguages = ["aaaaa"]
-    var country:Int
+    let listLanguages = fetch_coutry()
+    var country:String
    
     
     @State var showMessageError = false
@@ -41,7 +42,7 @@ struct UserLanguagesDisplay: View {
     func LanguageAlreadyExistsInList() -> Bool {
         var count = 0
         while( count < self.user.languages.count) {
-            if self.user.languages[count].country == self.country{
+            if (self.user.languages[count].country == self.country){
                 return true
                
             }
@@ -85,7 +86,7 @@ struct UserLanguagesDisplay: View {
                 UserLanguages in
                 HStack{
                     VStack{
-                    Text("\(self.listLanguages[UserLanguages.country])")
+                    Text("\(UserLanguages.country)")
                          .font(.system(size: 20, weight: .heavy, design: .default))
                     
                     }

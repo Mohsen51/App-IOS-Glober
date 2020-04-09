@@ -17,7 +17,7 @@ struct SelectImage: View {
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
-        user.image = inputImage
+        self.user.image = inputImage
         self.displayImage = Image(uiImage: inputImage)
     }
     
@@ -27,7 +27,7 @@ struct SelectImage: View {
                 .frame(width:100,height:100)
                
             
-            if user.image != nil {
+            if  self.user.image != nil {
                 displayImage?
                  .resizable()
                   .frame(width:150,height:150)
