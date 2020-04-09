@@ -16,12 +16,6 @@ struct Submit: View {
     var data:[String:Any] = [:]
    
    
-    
-    init(){
-       
-        
-       
-    }
    
     var body: some View {
         VStack{
