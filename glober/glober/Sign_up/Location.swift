@@ -20,6 +20,7 @@ struct Location: View {
     let city = ["Paris","Nantes","Lille"]
     
     
+    
     var body: some View {
          NavigationView{
              ScrollView{
@@ -50,7 +51,7 @@ struct Location: View {
                    
                     
                     if self.showListPicker{
-                    Picker(selection: $selected, label: Text("")) {
+                        Picker(selection: $user.city , label: Text("")) {
                        ForEach(0..<city.count) { index in
                            Text(self.city[index]).tag(index)
                                      }

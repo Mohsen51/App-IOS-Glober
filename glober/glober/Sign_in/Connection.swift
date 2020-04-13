@@ -10,12 +10,12 @@ import SwiftUI
 
 struct Connection: View {
     
-    @State var manager = POST()
+    @State var manager = APISignIn()
     @State private var username = ""
     @State private var password = ""
     @State var data:[String:Any] = [:]
-    @State var errorMessage = false
-        
+    @State var errorMessageEmptyFiels = false
+   
     
     init(){
         self.data = ["username":self.username,"password":self.password]
@@ -57,7 +57,10 @@ struct Connection: View {
                           
             )
             
-            if self.errorMessage == true {
+            if self.errorMessageCredentials {
+            
+            }
+            if self.manager.errorMessageEmptyFiels{
                 Text("empty fields")
             }
         }

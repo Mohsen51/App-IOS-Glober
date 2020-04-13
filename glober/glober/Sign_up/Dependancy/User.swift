@@ -30,6 +30,7 @@ class User: ObservableObject {
     @Published var nationality:Int = 0
     @Published var dateOfBirth:Date = Date()
     @Published var city:Int = -1
+    @Published var country:String = ""
     @Published var contacts = [UserCoordinates]()
     @Published var description:String = ""
     @Published var preferences = Array(repeating: 1, count: 6)
@@ -52,23 +53,36 @@ class User: ObservableObject {
     
     func format_before_Json() -> [String:Any]{
         var data: [String:Any] = [:]
-    
-        data["username"] = self.name
-        data["gender"] = self.gender
-        data["university"] = self.school
-        data["email"] =  self.email
-        data["dateOfBirth"] = self.dateOfBirth.millisecondsSince1970
-        data["description"] = self.description
-        data["password"] = self.password
-        data["social_media"] = fetch_social_media()
-        data["about"] = self.preferences
-        data["languages"] = self.fetch_languages()
-        if self.image != nil{
-            data["picture"] = self.encode_image_base64()
-        }
         
-       
-        //let Jsonned = encode_json(data: data )
+        let city = ["Paris","Nantes","Lille"]
+    
+        data["FirstName"] = self.name
+        data["Gender"] = self.gender
+        data["Status"] = self.status
+        data["University"] = self.school
+        data["Email"] =  self.email
+        data["DateOfBirth"] = self.dateOfBirth.millisecondsSince1970
+        data["Description"] = self.description
+        data["PasswordHash"] = self.password
+        //data["Social_media"] = fetch_social_media()
+        data["City"] = city[self.city]
+        data["Country"] = "France"
+        data["About"] = self.description
+        data["Party"] = self.preferences[0]
+        data["Museum"] = self.preferences[1]
+        data["Bar"] = self.preferences[2]
+        data["Blabla"] = self.preferences[3]
+        data["Sport"] = self.preferences[4]
+        data["Language"] = self.fetch_languages()
+       /* if self.image != nil{
+            data["picture"] = self.encode_image_base64()
+        }*/
+        
+      
+    
+       /* for (index, keyValue) in data.enumerated() {
+           print("[\(index)] = \(keyValue)")
+        }*/
         return data
         
     }
