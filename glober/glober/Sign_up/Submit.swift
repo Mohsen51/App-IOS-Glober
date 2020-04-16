@@ -27,8 +27,8 @@ struct Submit: View {
             
             )
            
-            if (self.manager.error_sign_up) {
-                Text("Error while signing up")
+            if (self.manager.errorSignUp) {
+                Text("Email alreday used ! ")
             }
         }
     }

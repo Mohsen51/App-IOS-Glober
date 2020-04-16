@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class APISignIn: ObservableObject {
     
-    @ObservableObject var errorMessageEmptyFiels = false
+    @EnvironmentObject var token:Token
+    @Published var errorSignIn = false
     
     func verify_authentification(body:[String:Any],urlparam:String){
         
@@ -29,14 +31,26 @@ class APISignIn: ObservableObject {
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
            
            URLSession.shared.dataTask(with: request){(data,response,error) in
-               guard let receiveData = data else {return}
+               guard let data = data else {return}
                guard let ReceiveResponse = response else {return}
                
-               if let json = try? JSONSerialization.jsonObject(with: receiveData, options: []) {
-                              print(json)
-                          }
+            
+                //debug
+               if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                print(json)
+                }
               
-                print(ReceiveResponse)
+               let DecodedData = try! JSONDecoder().decode(Success.self, from: data)
+                
+                if DecodedData.success == 1 {
+                    
+                    let identifiant = try! JSONDecoder().decode(Identifiant.self, from: data)
+                    
+                    DispatchQueue.main.async {
+                        self.token.token = identifiant.token
+                    }
+                }
+               
                
                
            }.resume()

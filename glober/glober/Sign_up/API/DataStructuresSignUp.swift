@@ -32,3 +32,12 @@ struct Test: Codable{
     var success:Int
     var response:[Data]
 }
+
+
+struct Response: Codable{
+    
+    var success:Int
+    var code:Int
+    var message:String
+    
+}

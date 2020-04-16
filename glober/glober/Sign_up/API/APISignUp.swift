@@ -13,9 +13,9 @@ import Combine
 
 class APISignUp : ObservableObject  {
     
-    @ObservableObject error_sign_up:Bool = false
+    @Published var errorSignUp:Bool = false
     
-    var status = 1
+   
     
     func send_data_sign_up(body:Any,urlparam:String) {
         guard let url = URL(string:urlparam)else{
@@ -35,16 +35,21 @@ class APISignUp : ObservableObject  {
         guard let data = data else{return }
        
         guard let response = response else{return }
-        print(response)
+       
            
+        //Debug
         if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                        print(json)
                    }
             
-            /* DispatchQueue.main.async {
-                print(data ?? "nul")
-            }*/
+        let DecodedData = try! JSONDecoder().decode(Response.self, from: data)
             
+            if DecodedData.code == 10 {
+                
+                DispatchQueue.main.async {
+                    self.errorSignUp = true
+                }
+            }
         }.resume()
     }
     
@@ -65,16 +70,16 @@ class APISignUp : ObservableObject  {
             guard let response = response else{return }
             print(response)
             
+            //debug
             if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                 print(json)
             }
             
             
-            let Jsoned = try! JSONDecoder().decode(Test.self, from: data)
-            print(Jsoned.response)
-            DispatchQueue.main.async {
-              //  self.data = Jsoned
-            }
+            let DecodedData = try! JSONDecoder().decode(Response.self, from: data)
+            
+           
+           
         }).resume()
     }
     

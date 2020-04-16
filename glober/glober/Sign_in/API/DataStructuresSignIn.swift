@@ -9,9 +9,16 @@
 import Foundation
 
 
-struct Identification {
-    
+class Identifiant: Codable {
     var token:String
-    var id_user:Int
-    
 }
+
+class Token: ObservableObject {
+    @Published var token:String = ""
+}
+
+
+struct Success: Codable {
+    var success:Int
+}
+

@@ -14,7 +14,7 @@ struct Connection: View {
     @State private var username = ""
     @State private var password = ""
     @State var data:[String:Any] = [:]
-    @State var errorMessageEmptyFiels = false
+    @State var errorMessage = false
    
     
     init(){
@@ -46,7 +46,7 @@ struct Connection: View {
                 action: {
                     if self.CheckIfFilled() == false{
                         self.errorMessage = false
-                        self.manager.verify_authentification(body: self.data,urlparam:"http://212.47.232.226/api/users/8")
+                        self.manager.verify_authentification(body: self.data,urlparam:"http://212.47.232.226/api/users/SignIn")
                     }
                     else{
                         self.errorMessage = true
@@ -57,10 +57,8 @@ struct Connection: View {
                           
             )
             
-            if self.errorMessageCredentials {
             
-            }
-            if self.manager.errorMessageEmptyFiels{
+            if self.errorMessage {
                 Text("empty fields")
             }
         }
