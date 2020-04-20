@@ -14,6 +14,7 @@ import Combine
 class APISignUp : ObservableObject  {
     
     @Published var errorSignUp:Bool = false
+    @Published var completed:Bool = false
     
    
     
@@ -48,6 +49,11 @@ class APISignUp : ObservableObject  {
                 
                 DispatchQueue.main.async {
                     self.errorSignUp = true
+                }
+            }
+            else{
+                DispatchQueue.main.async {
+                self.completed = true
                 }
             }
         }.resume()

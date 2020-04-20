@@ -29,7 +29,7 @@ class User: ObservableObject {
     @Published var gender:Int = 1
     @Published var nationality:Int = 0
     @Published var dateOfBirth:Date = Date()
-    @Published var city:Int = -1
+    @Published var city:Int = 0
     @Published var country:String = ""
     @Published var contacts = [UserCoordinates]()
     @Published var description:String = ""
@@ -39,8 +39,10 @@ class User: ObservableObject {
     @Published var password:String = ""
     @Published var image: UIImage?
     
+    @Published var token:String
+    
     init(){
-        
+        self.token = "aaaa"
     }
     
     func encode_image_base64() -> String {

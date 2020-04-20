@@ -37,7 +37,7 @@ struct Test: Codable{
 struct Response: Codable{
     
     var success:Int
-    var code:Int
+    var code:Int?
     var message:String
     
 }

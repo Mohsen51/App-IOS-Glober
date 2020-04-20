@@ -12,18 +12,23 @@ import SwiftUI
 
 class APISignIn: ObservableObject {
     
-    @EnvironmentObject var token:Token
-    @Published var errorSignIn = false
     
-    func verify_authentification(body:[String:Any],urlparam:String){
+   
+    @Published var token = ""
+    @Published var errorSignIn = false
+    @Published var over = false
+
+    
+    func verify_authentification(body:[String:Any],urlparam:String,completion: @escaping(Bool) -> Void){
         
-           guard let url = URL(string:urlparam)else{
-                   return
-               }
+        let url = URL(string:urlparam)!
            
                
+            print(body)
            let JsonBody = try! JSONSerialization.data(withJSONObject: body)
            
+            
+        
            var request =  URLRequest(url:url)
            request.httpMethod = "POST"
            request.httpBody = JsonBody
@@ -46,13 +51,26 @@ class APISignIn: ObservableObject {
                     
                     let identifiant = try! JSONDecoder().decode(Identifiant.self, from: data)
                     
+                    
                     DispatchQueue.main.async {
-                        self.token.token = identifiant.token
+                        self.token = identifiant.token
+                        completion(true)
                     }
+                    
                 }
+                else {
+                    DispatchQueue.main.async {
+                            self.errorSignIn = true
+                            completion(false)
+                    }
+                   
+            
+                    
+            }
                
                
                
            }.resume()
-       }
+        
+    }
 }

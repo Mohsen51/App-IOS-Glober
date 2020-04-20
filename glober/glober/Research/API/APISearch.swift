@@ -1,5 +1,5 @@
 //
-//  APIProfil.swift
+//  APISearch.swift
 //  glober
 //
 //  Created by Antonin Boulnois on 16/04/2020.
@@ -9,20 +9,33 @@
 import Foundation
 import SwiftUI
 
-class APIProfil: ObservableObject {
+class APIResearch: ObservableObject {
     
-   
-    @Published var data:[UserProfile.Data]?
-  
+    @EnvironmentObject var token:Token
+    @Published var data:[ProfilResults.Data] = []
+    @Published var callback:Bool = false
     
-    func get_profil(urlparam:String,token:String){
+    struct Encode {
+        
+        private var Location:String
+        private var Token:String
+        init(location:String,token:String)
+        {
+            self.Location = location
+            self.Token = token
+        }
+    }
+    
+    func get_profils_from_city(city:String,urlparam:String){
         
            guard let url = URL(string:urlparam)else{
                    return
                }
-        print(token)
-       
-        let JsonBody = try! JSONSerialization.data(withJSONObject: ["aaa":1])
+        
+          
+           let data = Encode(location:city,token:token.token)
+               
+           let JsonBody = try! JSONSerialization.data(withJSONObject: data )
            
            var request =  URLRequest(url:url)
            request.httpMethod = "POST"
@@ -30,8 +43,7 @@ class APIProfil: ObservableObject {
            
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
            
-           /*URLSession.shared.dataTask(with: request){(data,response,error) in
-                print("aaaa")
+           URLSession.shared.dataTask(with: request){(data,response,error) in
                guard let data = data else {return}
                guard let ReceiveResponse = response else {return}
                
@@ -41,17 +53,18 @@ class APIProfil: ObservableObject {
                 print(json)
                 }
               
-               let DecodedData = try! JSONDecoder().decode(UserProfile.self, from: data)
+               let DecodedData = try! JSONDecoder().decode(ProfilResults.self, from: data)
                 
                if DecodedData.success == 1 {
                     
                     DispatchQueue.main.async {
                         self.data = DecodedData.data
+                        
                     }
                 }
                
                
                
-           }.resume()*/
+           }.resume()
        }
 }

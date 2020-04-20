@@ -10,16 +10,16 @@ import SwiftUI
 
 struct Connection: View {
     
-    @State var manager = APISignIn()
+    @EnvironmentObject var user:User
+    @EnvironmentObject var viewRoot:ViewRouter
+    @ObservedObject var manager = APISignIn()
     @State private var username = ""
     @State private var password = ""
     @State var data:[String:Any] = [:]
     @State var errorMessage = false
-   
+    @State var status = false
     
-    init(){
-        self.data = ["username":self.username,"password":self.password]
-    }
+
     
     func CheckIfFilled() -> Bool {
         if self.username == "" {
@@ -32,6 +32,7 @@ struct Connection: View {
           return false
       }
     
+   
     var body: some View {
         VStack{
             TextField("Email",text : $username)
@@ -45,19 +46,37 @@ struct Connection: View {
              Button(
                 action: {
                     if self.CheckIfFilled() == false{
+                        self.data = ["Email":self.username,"PasswordHash":self.password]
                         self.errorMessage = false
-                        self.manager.verify_authentification(body: self.data,urlparam:"http://212.47.232.226/api/users/SignIn")
+                        self.manager.errorSignIn = false
+                        self.manager.verify_authentification(body: self.data,urlparam:"http://212.47.232.226/api/users/SignIn"
+                        ){ result in
+                            self.viewRoot.page = result ? "dashbord" : "sign_in"
+                            self.user.token = self.manager.token
+                        }
+                        
+                        
+                        
+                        //self.token.token = self.manager.token
+                        //self.viewRoot.page = "dashbord"
                     }
                     else{
                         self.errorMessage = true
                     }
                     }
-                ,label: { Text("Verify")}
+                ,label: { Text("\(self.viewRoot.page)")}
                                   
                           
             )
             
+            if self.manager.errorSignIn {
+                Text("Wrong credentials")
+            }
             
+            if self.status {
+                Text("gg")
+            }
+           
             if self.errorMessage {
                 Text("empty fields")
             }

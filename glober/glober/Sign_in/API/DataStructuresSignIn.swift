@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 class Identifiant: Codable {
     var token:String

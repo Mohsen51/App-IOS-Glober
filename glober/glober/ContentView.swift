@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+   //@EnvironmentObject var user:User
+     @EnvironmentObject var token:Token
+    
+    
     var body: some View {
-        Connection()
+        Home()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}

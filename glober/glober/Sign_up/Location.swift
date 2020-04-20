@@ -12,6 +12,7 @@ import TextView
 struct Location: View {
     
     @EnvironmentObject var user:User
+    @EnvironmentObject var token:Token
     
     @State private var isEditing = false
     @State private var showListPicker = false
@@ -37,7 +38,7 @@ struct Location: View {
                         label: {
                             HStack(){
                                 VStack(alignment: .leading){
-                                    Text("\(self.city[self.selected])")
+                                    Text("\(self.city[self.user.city])")
                                         .foregroundColor(Color(.black))
                                     Spacer()
                            }.padding(10)
@@ -68,7 +69,7 @@ struct Location: View {
             }
             .navigationBarTitle(Text("Home"), displayMode: .inline)
             .navigationBarItems(trailing:
-                    NavigationLink(destination: Preferences()){
+                    NavigationLink(destination:  Preferences()){
                                    Text("Next").multilineTextAlignment(.trailing)
                                }
                         )
