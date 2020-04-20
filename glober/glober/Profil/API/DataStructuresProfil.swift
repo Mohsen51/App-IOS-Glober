@@ -13,7 +13,7 @@ import SwiftUI
 struct UserProfile: Codable {
 
     var success:Int
-    var data:[Data]
+    var data:Data
     
     struct Data: Codable{
         var FirstName:String

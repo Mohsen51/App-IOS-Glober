@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contentView = ContentView()
         let user = User()
         let token = Token()
-    
+        let viewRoot = ViewRouter()
        
 
         // Use a UIHostingController as window root view controller.
@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: ContentView()
                 .environmentObject(user)
-                .environmentObject(token))
+            .environmentObject(viewRoot))
             self.window = window
             window.makeKeyAndVisible()
         }

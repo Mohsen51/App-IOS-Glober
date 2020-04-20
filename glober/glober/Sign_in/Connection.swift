@@ -55,16 +55,12 @@ struct Connection: View {
                             self.user.token = self.manager.token
                         }
                         
-                        
-                        
-                        //self.token.token = self.manager.token
-                        //self.viewRoot.page = "dashbord"
                     }
                     else{
                         self.errorMessage = true
                     }
                     }
-                ,label: { Text("\(self.viewRoot.page)")}
+                ,label: { Text("submit")}
                                   
                           
             )
@@ -73,9 +69,6 @@ struct Connection: View {
                 Text("Wrong credentials")
             }
             
-            if self.status {
-                Text("gg")
-            }
            
             if self.errorMessage {
                 Text("empty fields")

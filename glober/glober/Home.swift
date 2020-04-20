@@ -22,7 +22,7 @@ struct Home: View {
     @State private var displaySignIn = false
     @State private var menu = true
     
-    @ObservedObject var viewRoot = ViewRouter()
+    @EnvironmentObject var viewRoot:ViewRouter
     
    
     
@@ -49,14 +49,14 @@ struct Home: View {
             }
             
             if self.viewRoot.page == "sign_in" {
-                 Connection().environmentObject(self.viewRoot)
+                 Connection()
                 .transition(.scale)
             }
             
            
            if self.viewRoot.page == "sign_up" {
                
-                Location().environmentObject(self.viewRoot)
+                Location()
                 .transition(.scale)
             }
             
@@ -65,12 +65,10 @@ struct Home: View {
                 Dashbord()
                 .transition(.scale)
             }
+            
+           
         }
     }
 }
 
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
-    }
-}
+

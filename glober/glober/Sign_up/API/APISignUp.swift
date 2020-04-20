@@ -18,7 +18,7 @@ class APISignUp : ObservableObject  {
     
    
     
-    func send_data_sign_up(body:Any,urlparam:String) {
+    func send_data_sign_up(body:Any,urlparam:String,completion: @escaping(Bool) -> Void) {
         guard let url = URL(string:urlparam)else{
             return
         }
@@ -49,11 +49,13 @@ class APISignUp : ObservableObject  {
                 
                 DispatchQueue.main.async {
                     self.errorSignUp = true
+                    completion(false)
                 }
             }
             else{
                 DispatchQueue.main.async {
                 self.completed = true
+                   completion(true)
                 }
             }
         }.resume()

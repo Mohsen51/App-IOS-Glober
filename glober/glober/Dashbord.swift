@@ -12,17 +12,13 @@ struct Dashbord: View {
     
     @State private var selection = 0
     @EnvironmentObject var user:User
+    @EnvironmentObject var viewRoot:ViewRouter
     
     var body: some View {
         VStack{
             
-
+         
            TabView {
-               Text("\(self.user.token)")
-                 .tabItem {
-                    Image(systemName: "phone.fill")
-                    Text("First Tab")
-                  }
                 Text("The content of the second view")
                 .tabItem {
                     Image(systemName: "magnifyinglass.circle")
@@ -33,13 +29,14 @@ struct Dashbord: View {
                     Image(systemName: "phone.fill")
                     Text("Third Tab")
                              }
+                DisplayProfile()
+                .tabItem {
+                   Image(systemName: "phone.fill")
+                   Text("profil")
+                 
+                 }
             }
         }
     }
 }
 
-struct Dashbord_Previews: PreviewProvider {
-    static var previews: some View {
-        Dashbord()
-    }
-}
