@@ -10,12 +10,12 @@ import Foundation
 import SwiftUI
 
 
-struct ProfilResults: Identifiable,Codable {
-    var id = UUID()
+struct ProfilResults: Codable {
     var success:Int
     var data:[Data]
     
-    struct Data: Codable {
+    struct Data: Identifiable,Codable {
+        var id = UUID()
         var Name:String
         var UserId:Int
         var Country:String
@@ -23,23 +23,11 @@ struct ProfilResults: Identifiable,Codable {
         var Preference:[Dict]
     }
     
-    struct Dict: Codable {
+    struct Dict: Identifiable,Codable {
+        var id = UUID()
         var Name:String
         var Level:Int
     }
 }
 
 
-struct SystemServices: ViewModifier
-{
-    static var user = User()
-    static var token = Token()
-    func body(content: Content) -> some View {
-    content
-        // defaults
-        .accentColor(.red)
-        // services
-        .environmentObject(Self.token)
-        .environmentObject(Self.user)
-      
-}}

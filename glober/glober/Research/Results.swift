@@ -10,17 +10,22 @@ import SwiftUI
 
 struct Results: View {
     
-    //@EnvironmentObject var token:Token
     @State var manager = APIResearch()
-    var result:[ProfilResults.Data]
+    var results:[ProfilResults.Data]
     
     init(result:[ProfilResults.Data]){
-        self.result = result
+        self.results = result
     }
     
     var body: some View {
         VStack{
-            //List()
+            List(self.results){
+                data in
+                
+                ProfilResultDisplay(pref: data)
+                
+                
+            }
             Text("aaa")
         }
     }

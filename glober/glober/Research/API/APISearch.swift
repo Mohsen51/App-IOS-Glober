@@ -13,7 +13,7 @@ class APIResearch: ObservableObject {
     
     @EnvironmentObject var token:Token
     @Published var data:[ProfilResults.Data] = []
-    @Published var callback:Bool = false
+   
     
     struct Encode {
         
@@ -26,15 +26,15 @@ class APIResearch: ObservableObject {
         }
     }
     
-    func get_profils_from_city(city:String,urlparam:String){
+    func get_profils_from_city(city:String,urlparam:String,token:String,completion: @escaping(Bool) -> Void){
         
            guard let url = URL(string:urlparam)else{
                    return
                }
         
           
-           let data = Encode(location:city,token:token.token)
-               
+           let data = Encode(location:city,token:token)
+            /*
            let JsonBody = try! JSONSerialization.data(withJSONObject: data )
            
            var request =  URLRequest(url:url)
@@ -43,7 +43,7 @@ class APIResearch: ObservableObject {
            
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
            
-           URLSession.shared.dataTask(with: request){(data,response,error) in
+          URLSession.shared.dataTask(with: request){(data,response,error) in
                guard let data = data else {return}
                guard let ReceiveResponse = response else {return}
                
@@ -59,12 +59,14 @@ class APIResearch: ObservableObject {
                     
                     DispatchQueue.main.async {
                         self.data = DecodedData.data
+                        completion(true)
                         
                     }
                 }
                
                
                
-           }.resume()
+           }.resume()*/
+        print("it's ok")
        }
 }

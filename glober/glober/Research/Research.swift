@@ -15,16 +15,17 @@ struct Research: View {
     @State private var displayResults = false
     @State private var fetchingData = false
     @State var manager = APIResearch()
-    @EnvironmentObject var token:Token
+    @EnvironmentObject var viewRoot:ViewRouter
+    @EnvironmentObject var user:User
     private let city = ["Paris","Nantes","Lille"]
     
     init(){
-        
+       
     }
       
     var body: some View {
         
-        
+        NavigationView{
         VStack{
            
             Button(
@@ -38,7 +39,6 @@ struct Research: View {
                    HStack(){
                         VStack(alignment: .leading){
                              Text("\(self.city[location])")
-                             
                                 .foregroundColor(Color(.black))
                             
                             Spacer()
@@ -53,7 +53,9 @@ struct Research: View {
                        
                    }
                
-                  )
+            ).onAppear{
+                self.viewRoot.displayResearch = false
+            }
               
                      .padding(.bottom,30)
                
@@ -69,23 +71,34 @@ struct Research: View {
             
            
             Button(action: {
-                //self.token.token = "aaaaa"
-                self.manager.get_profils_from_city(city:self.city[self.location], urlparam: "http://212.47.232.226/api/users/dashboard/friends")
-                self.displayResults = true
+                self.manager.get_profils_from_city(city:self.city[self.location], urlparam: "http://212.47.232.226/api/users/dashboard/friends",token:self.user.token){
+                    
+                    result in
+                    
+                    if result {
+                        self.displayResults = true
+                    }
+                }
+                //to remove
+               self.viewRoot.displayResearch = true
+                
+               
                 
             }, label: { Text("Submit")
             })
             
-            NavigationLink(destination: Results(result:self.manager.data), isActive: self.$displayResults){
-                           Text("")
-                       }
             
                
             
           
             }
-         
+            .navigationBarItems(trailing:
+                        NavigationLink(destination: Results(result:self.manager.data),isActive: self.$viewRoot.displayResearch){
+                                           Text(" ").multilineTextAlignment(.trailing)
+                                       }
+                                )
         
+        }
     }
 }
 

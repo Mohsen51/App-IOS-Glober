@@ -21,13 +21,13 @@ struct Dashbord: View {
            TabView {
                 Text("The content of the second view")
                 .tabItem {
-                    Image(systemName: "magnifyinglass.circle")
-                    Text("Second Tab")
+                    Image(systemName: "phone.fill")
+                    Text("dashbord")
                              }
-                Text("The content of the third view")
+                Research()
                 .tabItem {
                     Image(systemName: "phone.fill")
-                    Text("Third Tab")
+                    Text("Research")
                              }
                 DisplayProfile()
                 .tabItem {

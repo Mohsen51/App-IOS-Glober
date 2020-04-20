@@ -11,6 +11,7 @@ import SwiftUI
 class ViewRouter: ObservableObject {
     
     @Published var page:String = "home"
+    @Published var displayResearch:Bool = false
     
     
 }
@@ -28,6 +29,7 @@ struct Home: View {
     
     var body: some View {
         VStack{
+            
             if self.viewRoot.page == "home" {
                 Button(
                     action: {

@@ -15,7 +15,7 @@ class APISignIn: ObservableObject {
     
    
     @Published var token = ""
-    @Published var errorSignIn = false
+   
     @Published var over = false
 
     
@@ -60,7 +60,6 @@ class APISignIn: ObservableObject {
                 }
                 else {
                     DispatchQueue.main.async {
-                            self.errorSignIn = true
                             completion(false)
                     }
                    

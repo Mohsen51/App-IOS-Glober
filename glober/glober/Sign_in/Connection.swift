@@ -17,7 +17,8 @@ struct Connection: View {
     @State private var password = ""
     @State var data:[String:Any] = [:]
     @State var errorMessage = false
-    @State var status = false
+    @State var errorSignIn = false
+    
     
 
     
@@ -48,11 +49,16 @@ struct Connection: View {
                     if self.CheckIfFilled() == false{
                         self.data = ["Email":self.username,"PasswordHash":self.password]
                         self.errorMessage = false
-                        self.manager.errorSignIn = false
+                        self.errorSignIn = false
                         self.manager.verify_authentification(body: self.data,urlparam:"http://212.47.232.226/api/users/SignIn"
                         ){ result in
                             self.viewRoot.page = result ? "dashbord" : "sign_in"
                             self.user.token = self.manager.token
+                            
+                            if result == false {
+                                self.errorSignIn = true
+                            }
+                        
                         }
                         
                     }
@@ -65,7 +71,7 @@ struct Connection: View {
                           
             )
             
-            if self.manager.errorSignIn {
+            if self.errorSignIn {
                 Text("Wrong credentials")
             }
             
