@@ -30,4 +30,24 @@ struct ProfilResults: Codable {
     }
 }
 
+struct ProfilResultsExtraInfo: Codable {
+    var success:Int
+    
+    var UserId:Int
+    var FirstName:String
+    var Age:Int
+    var Country:String
+    var Gender:Int
+    var Bar:Int
+    var Blabla:Int
+    var Party:Int
+    var Museam:Int
+    var Sport:Int
+    var Langues:[String]
+    var About:String
+    //var Image:String
+   
+    
+}
+
 

@@ -12,6 +12,7 @@ struct Results: View {
     
     @State var manager = APIResearch()
     var results:[ProfilResults.Data]
+    @State var showExtraInfoUser = false
     
     init(result:[ProfilResults.Data]){
         self.results = result
@@ -21,7 +22,7 @@ struct Results: View {
         VStack{
             List(self.results){
                 data in
-                
+                                
                 ProfilResultDisplay(pref: data)
                 
                 
