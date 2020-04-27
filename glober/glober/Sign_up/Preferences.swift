@@ -19,27 +19,27 @@ struct Preferences: View {
                 VStack{
                         HStack{
                             // preference 1
-                            Preference(choice:0)
+                            Preference(choice:0,imageName: "iu")
                             //preference 2
-                            Preference(choice:1)
+                            Preference(choice:1,imageName: "iu")
                         }
                     .padding(.bottom,10)
                     
                    
                         HStack{
                             // preference 1
-                            Preference(choice:2)
+                            Preference(choice:2,imageName: "iu")
                             //preference 2
-                            Preference(choice:3)
+                            Preference(choice:3,imageName: "iu")
                         }
                      .padding(.bottom,10)
                     
                    
                         HStack{
                             // preference 1
-                            Preference(choice:4)
+                            Preference(choice:4,imageName: "iu")
                             //preference 2
-                            Preference(choice:5)
+                            Preference(choice:5,imageName: "iu")
                     }
                 }
                 .padding(.horizontal,15)

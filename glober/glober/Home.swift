@@ -19,6 +19,35 @@ class ViewRouter: ObservableObject {
 }
 
 
+struct HomePage: View {
+    
+     @EnvironmentObject var viewRoot:ViewRouter
+    
+    var body: some View {
+        VStack{
+        Button(
+            action: {
+                self.viewRoot.page = "sign_up"
+                }
+            ,label: { Text("Sign Up")}
+                              
+                      
+        )
+            .padding()
+        
+         Button(
+               action: {
+                 self.viewRoot.page = "sign_in"
+                   }
+               ,label: { Text("Sign In")}
+                                 
+                         
+           )
+        }
+    }
+}
+
+
 struct Home: View {
     
     @State private var displaySignUp = false
@@ -33,23 +62,7 @@ struct Home: View {
         VStack{
             
             if self.viewRoot.page == "home" {
-                Button(
-                    action: {
-                        self.viewRoot.page = "sign_up"
-                        }
-                    ,label: { Text("Sign Up")}
-                                      
-                              
-                )
-                
-                 Button(
-                       action: {
-                         self.viewRoot.page = "sign_in"
-                           }
-                       ,label: { Text("Sign In")}
-                                         
-                                 
-                   )
+                HomePage()
             }
             
             if self.viewRoot.page == "sign_in" {

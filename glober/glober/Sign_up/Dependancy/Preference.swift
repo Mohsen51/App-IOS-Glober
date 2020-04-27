@@ -16,6 +16,13 @@ struct Preference: View{
     let preference = ["👍","👎","😍"]
     let choice:Int
     
+    var imageName:String
+    
+    init(choice:Int,imageName:String){
+        self.choice = choice
+        self.imageName = imageName
+    }
+    
     var body: some View{
         
         VStack{
@@ -29,7 +36,7 @@ struct Preference: View{
                 label: {
                     ZStack{
                         
-                        Image("iu")
+                        Image(self.imageName)
                         .resizable()
                         .scaledToFit()
                         .frame(width:150,height:150)
