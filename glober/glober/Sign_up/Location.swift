@@ -12,12 +12,14 @@ import TextView
 struct Location: View {
     
     @EnvironmentObject var user:User
+    @EnvironmentObject var token:Token
     
     @State private var isEditing = false
     @State private var showListPicker = false
     @State private var selected = 0
     
     let city = ["Paris","Nantes","Lille"]
+    
     
     
     var body: some View {
@@ -36,7 +38,7 @@ struct Location: View {
                         label: {
                             HStack(){
                                 VStack(alignment: .leading){
-                                    Text("\(self.city[self.selected])")
+                                    Text("\(self.city[self.user.city])")
                                         .foregroundColor(Color(.black))
                                     Spacer()
                            }.padding(10)
@@ -50,7 +52,7 @@ struct Location: View {
                    
                     
                     if self.showListPicker{
-                    Picker(selection: $selected, label: Text("")) {
+                        Picker(selection: $user.city , label: Text("")) {
                        ForEach(0..<city.count) { index in
                            Text(self.city[index]).tag(index)
                                      }
@@ -67,7 +69,7 @@ struct Location: View {
             }
             .navigationBarTitle(Text("Home"), displayMode: .inline)
             .navigationBarItems(trailing:
-                    NavigationLink(destination: Preferences()){
+                    NavigationLink(destination:  Preferences()){
                                    Text("Next").multilineTextAlignment(.trailing)
                                }
                         )

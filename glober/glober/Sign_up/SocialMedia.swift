@@ -52,7 +52,7 @@ struct SocialMedia: View {
                           label: {
                             HStack(){
                                  VStack(alignment: .leading){
-                                      Text("\(self.list[selectedNetwork])")
+                                    Text("\(self.list[self.selectedNetwork] )")
                                       
                                          .foregroundColor(Color(.black))
                                      

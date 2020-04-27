@@ -8,50 +8,71 @@
 
 import SwiftUI
 
+class ViewRouter: ObservableObject {
+    
+    @Published var page:String = "home"
+    @Published var displayResearch:Bool = false
+    @Published var displayContactPage:Bool = false
+    
+    
+    
+}
+
+
 struct Home: View {
     
     @State private var displaySignUp = false
     @State private var displaySignIn = false
     @State private var menu = true
     
+    @EnvironmentObject var viewRoot:ViewRouter
+    
+   
+    
     var body: some View {
         VStack{
-            if self.menu {
+            
+            if self.viewRoot.page == "home" {
                 Button(
                     action: {
-                        self.displaySignUp = true
-                        self.menu = false
+                        self.viewRoot.page = "sign_up"
                         }
                     ,label: { Text("Sign Up")}
                                       
                               
-                ).sheet(isPresented: $displaySignUp, content: {
-                     Location()
-                })
+                )
                 
                  Button(
                        action: {
-                           self.displaySignIn = true
+                         self.viewRoot.page = "sign_in"
                            }
-                       ,label: { Text("Sign Up")}
+                       ,label: { Text("Sign In")}
                                          
                                  
-                   ).sheet(isPresented: $displaySignIn, content: {
-                        Connection()
-                   })
+                   )
+            }
+            
+            if self.viewRoot.page == "sign_in" {
+                 Connection()
+                .transition(.scale)
             }
             
            
-            if self.displaySignUp == true {
+           if self.viewRoot.page == "sign_up" {
                
                 Location()
+                .transition(.scale)
             }
+            
+            
+            if self.viewRoot.page == "dashbord" {
+                Dashbord()
+                .transition(.scale)
+            }
+            
+           
         }
     }
 }
 
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
-    }
-}
+

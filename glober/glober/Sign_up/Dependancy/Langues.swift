@@ -8,18 +8,6 @@
 
 import SwiftUI
 
-func fetch_coutry() -> [String]{
-    
-    var countries: [String] = []
-
-    for code in NSLocale.isoCountryCodes  {
-        let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
-        let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
-        countries.append(name)
-    }
-    
-    return countries
-}
 
 
 struct Langues: View {
@@ -28,7 +16,7 @@ struct Langues: View {
     @EnvironmentObject var user:User
     @State private var selectedCountry = 0
     
-    private let countryList = fetch_coutry()
+    let languagesList = Languages.returnLanguages()
     
     var body: some View {
         VStack{
@@ -46,7 +34,7 @@ struct Langues: View {
                             Text("Languages")
                               .foregroundColor(Color(.black))
                                .font(.system(size: 15))
-                            Text("\(self.countryList[selectedCountry])")
+                            Text("\(languagesList[selectedCountry])")
                              
                                 .foregroundColor(Color(.black))
                             
@@ -66,14 +54,14 @@ struct Langues: View {
     
            if self.showListPicker{
                Picker(selection: $selectedCountry, label: Text("")) {
-                   ForEach(0 ..< countryList.count) {
-                       Text(self.countryList[$0])
+                   ForEach(0 ..< languagesList.count) {
+                       Text(self.languagesList[$0])
 
                    }
                }
            }
             
-            UserLanguagesDisplay(country: self.countryList[self.selectedCountry])
+            UserLanguagesDisplay(country: self.languagesList[self.selectedCountry])
                 .frame(height:300)
             
         }

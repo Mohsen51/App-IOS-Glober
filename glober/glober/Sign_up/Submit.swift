@@ -8,10 +8,13 @@
 
 import SwiftUI
 
+
+
 struct Submit: View {
     
-    @State var manager = POST()
+    @State var manager = APISignUp()
     @EnvironmentObject var user:User
+    @EnvironmentObject var viewRoot:ViewRouter
     
     var data:[String:Any] = [:]
    
@@ -19,16 +22,24 @@ struct Submit: View {
    
     var body: some View {
         VStack{
-            Button(
-                action: {
-                    self.manager.send_data(body: self.user.format_before_Json(),urlparam:"http://212.47.232.226/api/users/8")
-            }, label: {Text("click")}
             
-            )
            
-            if (self.manager.data != nil) {
-                Text("\(self.user.name)")
+            Text("aaa").onAppear{
+                    self.manager.send_data_sign_up(body: self.user.format_before_Json(),urlparam:"http://212.47.232.226/api/users/signUp"){
+                        result in
+                            
+                        if result {
+                            self.viewRoot.page = "sign_in"
+                        }
+                        
+                    }
+                    
             }
+           
+            if (self.manager.errorSignUp) {
+                Text("Email alreday used ! ")
+            }
+           
         }
     }
 }

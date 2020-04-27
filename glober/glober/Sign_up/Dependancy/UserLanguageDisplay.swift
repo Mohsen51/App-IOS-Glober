@@ -11,7 +11,7 @@ import SwiftUI
 
 struct UserLanguagesDisplay: View {
     
-    let listLanguages = fetch_coutry()
+   
     var country:String
    
     

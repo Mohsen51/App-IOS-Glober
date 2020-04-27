@@ -27,6 +27,7 @@ struct Profil: View {
               return formatter
           }
 
+
    
    func CheckIfFilled() -> Bool {
        
@@ -38,6 +39,16 @@ struct Profil: View {
        else if user.email == "" {
            return true
        }
+       else if user.school == ""{
+        return true
+        }
+       else if self.user.languages.count == 0 {
+        return true
+        }
+       else if self.user.password == ""{
+        return true
+        }
+        
        return false
    }
     

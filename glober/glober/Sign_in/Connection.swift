@@ -10,16 +10,17 @@ import SwiftUI
 
 struct Connection: View {
     
-    @State var manager = POST()
+    @EnvironmentObject var user:User
+    @EnvironmentObject var viewRoot:ViewRouter
+    @ObservedObject var manager = APISignIn()
     @State private var username = ""
     @State private var password = ""
     @State var data:[String:Any] = [:]
     @State var errorMessage = false
-        
+    @State var errorSignIn = false
     
-    init(){
-        self.data = ["username":self.username,"password":self.password]
-    }
+    
+
     
     func CheckIfFilled() -> Bool {
         if self.username == "" {
@@ -32,6 +33,7 @@ struct Connection: View {
           return false
       }
     
+   
     var body: some View {
         VStack{
             TextField("Email",text : $username)
@@ -45,19 +47,36 @@ struct Connection: View {
              Button(
                 action: {
                     if self.CheckIfFilled() == false{
+                        self.data = ["Email":self.username,"PasswordHash":self.password]
                         self.errorMessage = false
-                        self.manager.verify_authentification(body: self.data,urlparam:"http://212.47.232.226/api/users/8")
+                        self.errorSignIn = false
+                        self.manager.verify_authentification(body: self.data,urlparam:"http://212.47.232.226/api/users/SignIn"
+                        ){ result in
+                            self.viewRoot.page = result ? "dashbord" : "sign_in"
+                            self.user.token = self.manager.token
+                            
+                            if result == false {
+                                self.errorSignIn = true
+                            }
+                        
+                        }
+                        
                     }
                     else{
                         self.errorMessage = true
                     }
                     }
-                ,label: { Text("Verify")}
+                ,label: { Text("submit")}
                                   
                           
             )
             
-            if self.errorMessage == true {
+            if self.errorSignIn {
+                Text("Wrong credentials")
+            }
+            
+           
+            if self.errorMessage {
                 Text("empty fields")
             }
         }
