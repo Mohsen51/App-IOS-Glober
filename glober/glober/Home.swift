@@ -24,28 +24,55 @@ struct HomePage: View {
      @EnvironmentObject var viewRoot:ViewRouter
     
     var body: some View {
-        VStack{
-        Button(
-            action: {
-                self.viewRoot.page = "sign_up"
+        ZStack{
+            VStack{
+                
+            Image("Accueil")
+                .padding(.trailing, 40)
+                
+            };VStack{
+                Image("LogoLetter")
+                .resizable()
+                    .frame(width : 280.0,height : 90)
+            }.offset(x: 0, y: -270);
+            VStack{
+                ZStack{
+                    Button(
+                        action: {
+                            self.viewRoot.page = "sign_up"
+                            })
+                        {
+                            Rectangle()
+                                .frame(width: 320, height: 80, alignment: .center)
+                                    .cornerRadius(50)
+                                    .foregroundColor(.blue)
+                                    
+                        }
+                            Text("Inscription")
+                                .font(.largeTitle)
+                                    .foregroundColor(.black)
+                                        
+                        
+                                    
                 }
-            ,label: { Text("Sign Up")}
-                              
-                      
-        )
-            .padding()
-        
-         Button(
-               action: {
-                 self.viewRoot.page = "sign_in"
-                   }
-               ,label: { Text("Sign In")}
-                                 
-                         
-           )
+                Button(action : {
+                    self.viewRoot.page = "sign_in"
+                }){
+                    Text("Déjà Membre ? Connexion")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                }
+                    
+                    
+            }.offset(x: 0, y: 230)
+                
+            }
+             
         }
-    }
 }
+        
+
+
 
 
 struct Home: View {

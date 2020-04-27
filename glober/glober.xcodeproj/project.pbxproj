@@ -700,14 +700,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"glober/Preview Content\"";
-				DEVELOPMENT_TEAM = 9STQ54L3SV;
+				DEVELOPMENT_TEAM = 8K9HHHQRJH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = glober/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LSDream.glober;
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftUiDevelopper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -720,14 +720,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"glober/Preview Content\"";
-				DEVELOPMENT_TEAM = 9STQ54L3SV;
+				DEVELOPMENT_TEAM = 8K9HHHQRJH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = glober/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LSDream.glober;
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftUiDevelopper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
