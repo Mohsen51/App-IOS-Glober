@@ -37,9 +37,7 @@ class APISignIn: ObservableObject {
            
            URLSession.shared.dataTask(with: request){(data,response,error) in
                guard let data = data else {return}
-               guard let ReceiveResponse = response else {return}
-               
-            
+              
                 //debug
                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                 print(json)

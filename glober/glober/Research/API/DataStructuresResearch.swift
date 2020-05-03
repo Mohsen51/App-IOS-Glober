@@ -33,6 +33,9 @@ struct ProfilResults: Codable {
 struct ProfilResultsExtraInfo: Codable {
     var success:Int
     
+    var data:[Data]
+    
+    struct Data: Codable {
     var UserId:Int
     var FirstName:String
     var Age:Int
@@ -46,8 +49,30 @@ struct ProfilResultsExtraInfo: Codable {
     var Langues:[String]
     var About:String
     //var Image:String
-   
+    }
     
 }
 
+struct ProfilFriendResultsExtraInfo: Codable {
+    var success:Int
+    
+    var data:[Data]
+    
+    struct Data: Codable {
+    var UserId:Int
+    var FirstName:String
+    var Age:Int
+    var Country:String
+    var Gender:Int
+    var Bar:Int
+    var Blabla:Int
+    var Party:Int
+    var Museam:Int
+    var Sport:Int
+    var Langues:[String]
+    var About:String
+    //var Image:String
+    }
+    
+}
 

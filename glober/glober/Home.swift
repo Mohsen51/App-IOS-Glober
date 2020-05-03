@@ -13,6 +13,7 @@ class ViewRouter: ObservableObject {
     @Published var page:String = "home"
     @Published var displayResearch:Bool = false
     @Published var displayContactPage:Bool = false
+    @Published var displayContactInfoPage:Bool = false
     
     
     
@@ -77,9 +78,7 @@ struct HomePage: View {
 
 struct Home: View {
     
-    @State private var displaySignUp = false
-    @State private var displaySignIn = false
-    @State private var menu = true
+    
     
     @EnvironmentObject var viewRoot:ViewRouter
     

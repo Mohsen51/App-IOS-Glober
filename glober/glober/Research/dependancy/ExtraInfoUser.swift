@@ -39,7 +39,7 @@ struct ExtraInfoUser: View {
         
         NavigationView{
             VStack{
-                Text("\(self.results.About)")
+                Text("\(self.results.data[0].About)")
                 
                 List(self.languages){
                    UserLanguages in
@@ -51,7 +51,7 @@ struct ExtraInfoUser: View {
                     
                     self.viewRoot.displayContactPage = false
                 
-                    self.languages = self.formListLanguages(languages: self.results.Langues)
+                    self.languages = self.formListLanguages(languages: self.results.data[0].Langues)
                 
             }
             
