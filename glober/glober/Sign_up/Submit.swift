@@ -17,6 +17,10 @@ struct Submit: View {
     @EnvironmentObject var viewRoot:ViewRouter
     
     var data:[String:Any] = [:]
+    
+    @State var picture:Image = Image("iu")
+    
+    
    
    
    
@@ -24,8 +28,14 @@ struct Submit: View {
         VStack{
             
            
-            Text("aaa").onAppear{
-                    self.manager.send_data_sign_up(body: self.user.format_before_Json(),urlparam:"http://212.47.232.226/api/users/signUp"){
+            Text("loading").onAppear{
+                if  self.user.image != nil {
+                    self.picture = Image(uiImage: self.user.image!)
+                }
+            
+                self.manager.send_image(image: self.picture, urlparam: "none")
+                
+                self.manager.send_data_sign_up(body: self.user.format_before_Json(),urlparam:"http://212.47.232.226/api/users/signUp"){
                         result in
                             
                         if result {

@@ -16,6 +16,8 @@ struct DisplayProfile: View {
    
     let genders = ["Man", "Woman", "Prefer not to say"]
     
+    let preference = ["👍","👎","😍"]
+    
     let languageFormated = { (language:String) -> UserLanguages in return UserLanguages(country:language)}
     
     
@@ -48,6 +50,8 @@ struct DisplayProfile: View {
                    }
                 
             }
+            
+            // self.manager.data?.Bar to access Bar value
             
             Text("aaa").onAppear {
                 

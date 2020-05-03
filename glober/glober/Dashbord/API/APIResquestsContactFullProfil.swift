@@ -1,28 +1,41 @@
 //
-//  APIProfil.swift
+//  APIFriendsFullProfil.swift
 //  glober
 //
-//  Created by Antonin Boulnois on 16/04/2020.
+//  Created by Antonin Boulnois on 28/04/2020.
 //  Copyright © 2020 Antonin Boulnois. All rights reserved.
 //
 
 import Foundation
 import SwiftUI
 
-class APIProfil: ObservableObject {
+class APIResquestsContactFullProfil: ObservableObject {
     
+    @EnvironmentObject var token:Token
+    @Published var data:[ProfilResults.Data] = []
    
-    @Published var data:UserProfile.Data?
-  
+    struct Encode {
+                 
+                 private var UserId:String
+                 private var Token:String
+                 init(userID:String,token:String)
+                 {
+                     self.UserId = userID
+                     self.Token = token
+                 }
+             }
     
-    func get_profil(urlparam:String,token:String,completion: @escaping(Bool) -> Void){
+    func get_profils_requests_friend(userID:String,urlparam:String,token:String,completion: @escaping(Bool) -> Void){
         
            guard let url = URL(string:urlparam)else{
                    return
                }
-        print(token)
-       
-        let JsonBody = try! JSONSerialization.data(withJSONObject: ["aaa":1])
+        
+        let  data_to_be_sent = Encode(userID: userID, token: token)
+          
+         
+            
+           let JsonBody = try! JSONSerialization.data(withJSONObject: data_to_be_sent )
            
            var request =  URLRequest(url:url)
            request.httpMethod = "POST"
@@ -30,10 +43,9 @@ class APIProfil: ObservableObject {
            
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
            
-           URLSession.shared.dataTask(with: request){(data,response,error) in
-               
+          URLSession.shared.dataTask(with: request){(data,response,error) in
                guard let data = data else {return}
-               
+              
                
             
                 //debug
@@ -41,26 +53,20 @@ class APIProfil: ObservableObject {
                 print(json)
                 }
               
-               let DecodedData = try! JSONDecoder().decode(UserProfile.self, from: data)
+               let DecodedData = try! JSONDecoder().decode(ProfilResults.self, from: data)
                 
                if DecodedData.success == 1 {
                     
                     DispatchQueue.main.async {
                         self.data = DecodedData.data
                         completion(true)
+                        
                     }
                 }
-                else{
-                    DispatchQueue.main.async {
-                       self.data = DecodedData.data
-                       completion(false)
-                   }
-         
-                }
-                
                
                
                
            }.resume()
+       
        }
 }

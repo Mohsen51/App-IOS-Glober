@@ -25,14 +25,14 @@ struct Contacter: View {
     
     var body: some View {
         VStack{
-            Text("\(self.userProfil.FirstName)")
+            Text("\(self.userProfil.data[0].FirstName)")
             
             TextView(text: $note, isEditing: $isEditing)
             .modifier(CustomStyleTextView())
             
             
             Button(
-                action: { self.manager.contacte(urlparam: "http://212.47.232.226/api/users/requestContact",idUser:self.userProfil.UserId, token: self.user.token,message:self.note){
+                action: { self.manager.contacte(urlparam: "http://212.47.232.226/api/users/requestContact",idUser:self.userProfil.data[0].UserId, token: self.user.token,message:self.note){
                     result in
                     
                     if result{
