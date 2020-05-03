@@ -11,10 +11,10 @@ import SwiftUI
 struct RoundedGrayBorder: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: 50))
         .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.secondary, lineWidth: 1)
+            RoundedRectangle(cornerRadius: 50)
+                .stroke(Color.black, lineWidth: 1)
         )
     }
 }
