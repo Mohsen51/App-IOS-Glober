@@ -48,7 +48,7 @@ struct Preference: View{
                       
                 }
               
-            )
+            ).buttonStyle(PlainButtonStyle())
             
             if self.showPicker == true {
                 Picker(selection: $user.preferences[self.choice], label: Text("")) {

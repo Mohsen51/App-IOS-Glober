@@ -33,17 +33,18 @@ class APIFriends: ObservableObject {
                    return
                }
         
-        let data_to_subimit = Encode(userID: userId,token: token)
+       
           
          
             
-           let JsonBody = try! JSONSerialization.data(withJSONObject: data_to_subimit )
+        let JsonBody = try! JSONSerialization.data(withJSONObject: ["Userid":userId] )
            
            var request =  URLRequest(url:url)
            request.httpMethod = "POST"
            request.httpBody = JsonBody
            
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
+            request.addValue("Bearer "+token,forHTTPHeaderField: "Authorization")
            
           URLSession.shared.dataTask(with: request){(data,response,error) in
                guard let data = data else {return}
@@ -80,13 +81,11 @@ class APIFriends: ObservableObject {
      
        
       
-         
-        let JsonBody = try! JSONSerialization.data(withJSONObject: token )
         
         var request =  URLRequest(url:url)
-        request.httpMethod = "POST"
-        request.httpBody = JsonBody
+        request.httpMethod = "GET"
         
+        request.addValue("Bearer "+token,forHTTPHeaderField: "Authorization")
         request.setValue("application/json",forHTTPHeaderField: "Content-Type")
         
        URLSession.shared.dataTask(with: request){(data,response,error) in
@@ -99,12 +98,16 @@ class APIFriends: ObservableObject {
              print(json)
              }
            
-            let DecodedData = try! JSONDecoder().decode(ProfilResults.self, from: data)
+           
              
+            let DecodedData = try! JSONDecoder().decode(HandleCodeEroor.self, from: data)
             if DecodedData.success == 1 {
-                 
+                let dataResponse = try! JSONDecoder().decode(ProfilResults.self, from: data)
                  DispatchQueue.main.async {
-                     self.data = DecodedData.data
+                    var data_without_uuid = dataResponse.data
+                    for var i in (0..<data_without_uuid.count){ data_without_uuid[i].id = UUID(); i+=1}
+                        
+                    self.data = data_without_uuid
                      completion(true)
                      
                  }

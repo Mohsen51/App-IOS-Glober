@@ -29,6 +29,7 @@ class APISignUp : ObservableObject  {
         var request =  URLRequest(url:url)
         request.httpMethod = "POST"
         request.httpBody = JsonBody
+       
         request.setValue("application/json",forHTTPHeaderField: "Content-Type")
         
         URLSession.shared.dataTask(with: request){(data,response,error) in

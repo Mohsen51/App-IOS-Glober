@@ -25,7 +25,7 @@ struct DisplayInfo_ButtonContacte: View {
                
                
                Button(action:{
-                self.manager.get_social_network_info(userId:self.data.UserId, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token){
+                self.manager.get_social_network_info(userId:self.data.UserProfileID, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token){
         
                                 result in
                                   

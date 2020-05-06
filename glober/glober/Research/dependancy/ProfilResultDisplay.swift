@@ -11,6 +11,7 @@ import SwiftUI
 struct ProfilResultDisplay: View {
     
     var data:ProfilResults.Data
+    @EnvironmentObject var user:User
     
     init(pref:ProfilResults.Data){
         self.data = pref
@@ -26,7 +27,7 @@ struct ProfilResultDisplay: View {
             action: {
              withAnimation {
                 
-                self.manager.get_extra_info_user(urlparam: "http://212.47.232.226/api/users/search/"+String(self.data.UserId)){
+                self.manager.get_extra_info_user(userid:self.data.UserProfileID,token: self.user.token, urlparam: "http://212.47.232.226/api/users/search/profile"){
                     result in
                     
                     if result {
@@ -38,19 +39,23 @@ struct ProfilResultDisplay: View {
             },
             label: {
                VStack{
-                   Text("\(self.data.Name)")
+                HStack{
+                Text("\(self.data.FirstName)")
                    
-                   Text("\(self.data.Country )")
+                Text("\(self.data.Country )")
                    
-                   Text("\(String(self.data.Age))")
-                   
-                   List(self.data.Preference){
-                       result in
-                           Image("iu")
-                                  .resizable()
-                                  .scaledToFit()
-                                  .frame(width:50,height:50)
-                   }
+                Text("\(String(self.data.DateOfBirth)+"year old")")
+                
+                }
+                
+                HStack{
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Blabla)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Museum)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Party)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar)
+                }
+                
                }
                }
              )

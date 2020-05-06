@@ -17,29 +17,20 @@ class APIResearchExtraInfoUser: ObservableObject {
     @Published var data:ProfilResultsExtraInfo?
    
     
-    struct Encode {
-        
-        private var Location:String
-        private var Token:String
-        init(location:String,token:String)
-        {
-            self.Location = location
-            self.Token = token
-        }
-    }
-    
-    func get_extra_info_user(urlparam:String,completion: @escaping(Bool) -> Void){
+   
+    func get_extra_info_user(userid:Int,token:String,urlparam:String,completion: @escaping(Bool) -> Void){
         
            guard let url = URL(string:urlparam)else{
                    return
                }
         
           
-         
+        let JsonBody = try! JSONSerialization.data(withJSONObject: ["Userid":userid] )
            
-         /*  var request =  URLRequest(url:url)
-           request.httpMethod = "GET"
-                      
+           var request =  URLRequest(url:url)
+           request.httpMethod = "POST"
+            request.httpBody = JsonBody
+           request.addValue("Bearer "+token,forHTTPHeaderField: "Authorization")
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
            
           URLSession.shared.dataTask(with: request){(data,response,error) in
@@ -65,7 +56,7 @@ class APIResearchExtraInfoUser: ObservableObject {
                
                
                
-           }.resume()*/
-        print("it's ok")
+           }.resume()
+        
        }
 }

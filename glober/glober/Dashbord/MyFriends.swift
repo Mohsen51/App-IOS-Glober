@@ -13,37 +13,33 @@ struct MyFriends: View {
   
     @EnvironmentObject var user:User
     @EnvironmentObject var viewRoot:ViewRouter
+    @State private var loading:Bool = true
     @State var manager = APIFriends()
+    @State var manager2 = APIRequestsContact()
+  
     
-    var friends:[ProfilResults.Data]
-    var requestFriends:[ProfilResults.Data]
-    
-    init(friends:[ProfilResults.Data],requestFriends:[ProfilResults.Data]){
-        self.friends = friends
-        self.requestFriends = requestFriends
-    }
     
     var body: some View {
         VStack{
             
             //Friends
          NavigationView{
-            List(self.friends){
+            
+            if (!self.loading ){
+            List(self.manager.data){
                   data in
-               
-                DisplayInfo_ButtonContacte(data: data)
+                Text("\(1)")
+                //DisplayInfo_ButtonContacte(data: data)
+                }
+            }
+            Text("")
+            .onAppear(){
+                self.manager.get_friends(urlparam: "http://212.47.232.226/api/users/dashboard/friends", token: self.user.token){result in  if result{ self.loading = false}}
+              
             }
             
-            //Requests Friends
-            List(self.requestFriends){
-                data in
-                
-                DisplayInfo_ButtonAcceptRefuse(data:data)
-               
-            
-            }
-            
-            }
+           
+         }
             .navigationBarItems(trailing:
                 NavigationLink(destination: ContactInfo(result:self.manager.contactInfo),isActive: self.$viewRoot.displayContactInfoPage){
                                Text(" ").multilineTextAlignment(.trailing)

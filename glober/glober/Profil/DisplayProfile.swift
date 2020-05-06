@@ -35,7 +35,7 @@ struct DisplayProfile: View {
         
             Text("\(self.manager.data?.FirstName ?? "no name")")
             
-            Text("\(String(self.manager.data?.Age ?? -1) )")
+            //Text("\(String(self.manager.data?.Age ?? -1) )")
             
             Text("\(self.genders[self.manager.data?.Gender ?? 2] )")
             
@@ -59,7 +59,7 @@ struct DisplayProfile: View {
                     result in
                     
                     if result {
-                         self.languages = self.formListLanguages(languages: self.manager.data?.Langues ?? [""])
+                         self.languages = self.formListLanguages(languages: self.manager.data?.Language ?? [""])
                     }
                 }
                

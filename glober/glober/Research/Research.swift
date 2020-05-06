@@ -71,16 +71,19 @@ struct Research: View {
             
            
             Button(action: {
-                self.manager.get_profils_from_city(city:self.city[self.location], urlparam: "http://212.47.232.226/api/users/dashboard/friends",token:self.user.token){
+                self.manager.get_profils_from_city(city:self.city[self.location], urlparam: "http://212.47.232.226/api/users/search",token:self.user.token){
                     
                     result in
                     
                     if result {
-                        self.displayResults = true
+                        self.viewRoot.displayResearch = true
                     }
+                    
                 }
-                //to remove
-               self.viewRoot.displayResearch = true
+                
+             
+               
+              
                 
                
                 
