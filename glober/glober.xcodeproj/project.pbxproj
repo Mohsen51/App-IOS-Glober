@@ -54,6 +54,8 @@
 		33E392A2244493830010AB79 /* DataStructuresSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E392A1244493830010AB79 /* DataStructuresSignIn.swift */; };
 		33F113E6243F41B600139DD7 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F113E5243F41B600139DD7 /* Connection.swift */; };
 		33F113E8243F483B00139DD7 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F113E7243F483B00139DD7 /* Home.swift */; };
+		712E25AF2465416400D081E1 /* Montserrat-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 712E25AD2465416400D081E1 /* Montserrat-ExtraLight.otf */; };
+		712E25B02465416400D081E1 /* MontserratAlternates-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 712E25AE2465416400D081E1 /* MontserratAlternates-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,8 @@
 		33E392A1244493830010AB79 /* DataStructuresSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructuresSignIn.swift; sourceTree = "<group>"; };
 		33F113E5243F41B600139DD7 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		33F113E7243F483B00139DD7 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		712E25AD2465416400D081E1 /* Montserrat-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.otf"; sourceTree = "<group>"; };
+		712E25AE2465416400D081E1 /* MontserratAlternates-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 				33860B93243DFA8A00CA1C41 /* Assets.xcassets */,
 				33860B98243DFA8A00CA1C41 /* LaunchScreen.storyboard */,
 				33860B9B243DFA8A00CA1C41 /* Info.plist */,
+				712E25AC246540B100D081E1 /* Font */,
 				33860B95243DFA8A00CA1C41 /* Preview Content */,
 			);
 			path = glober;
@@ -356,6 +361,15 @@
 			path = Sign_in;
 			sourceTree = "<group>";
 		};
+		712E25AC246540B100D081E1 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				712E25AD2465416400D081E1 /* Montserrat-ExtraLight.otf */,
+				712E25AE2465416400D081E1 /* MontserratAlternates-Medium.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,9 +480,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712E25AF2465416400D081E1 /* Montserrat-ExtraLight.otf in Resources */,
 				33860B9A243DFA8A00CA1C41 /* LaunchScreen.storyboard in Resources */,
 				33860B97243DFA8A00CA1C41 /* Preview Assets.xcassets in Resources */,
 				33860B94243DFA8A00CA1C41 /* Assets.xcassets in Resources */,
+				712E25B02465416400D081E1 /* MontserratAlternates-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,6 +40,7 @@ struct Preference: View{
                         .resizable()
                         .scaledToFit()
                         .frame(width:150,height:150)
+                            .cornerRadius(20)
                         
                          Text(preference[Int(user.preferences[self.choice])])
                          .font(.custom("Arial", size: 50))
@@ -48,7 +49,7 @@ struct Preference: View{
                       
                 }
               
-            )
+            ).buttonStyle(PlainButtonStyle())
             
             if self.showPicker == true {
                 Picker(selection: $user.preferences[self.choice], label: Text("")) {

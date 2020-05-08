@@ -65,14 +65,14 @@ struct Profil: View {
                         Toggle(isOn: $user.status){
                                if self.user.status{
                                       Text("Welcomer")
-                                       .font(.custom("Arial", size: 30))
+                                       .font(.custom("Arial", size: 28))
                                   }
                                   else{
                                       Text("Globber")
-                                      .font(.custom("Arial", size: 30))
+                                      .font(.custom("Arial", size: 28))
                             }
                       }
-                }
+                    }.padding(2)
                   TextField("Name",text : $user.name)
                     .padding()
                     .roundedGrayBorder()
@@ -173,7 +173,7 @@ struct Profil: View {
                        
                        
                 
-            .padding(15)
+            .padding(5)
             }
             .navigationBarItems(trailing:
                   HStack {

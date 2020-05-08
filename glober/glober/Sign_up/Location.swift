@@ -25,10 +25,18 @@ struct Location: View {
     var body: some View {
          NavigationView{
              ScrollView{
+                Spacer()
+                    .frame(height: 30)
                 VStack{
-                    Text("Location:")
-                        .modifier(CustomStyleText())
-                    
+                    Image("LogoLetter")
+                    .resizable()
+                        .frame(width : 280.0,height : 90)
+                    Spacer()
+                    .frame(height: 30)
+                    Text("Merci de renseigner votre ville :")
+                        .modifier(CustomStyleText3())
+                    Spacer()
+                        .frame(height: 20)
                     Button(
                         action: {
                             withAnimation {
@@ -58,16 +66,20 @@ struct Location: View {
                                      }
                                  }
                     }
+                };VStack{
                     
-                    Text("Who are you ?")
-                    .modifier(CustomStyleText2())
+                    Text("Décrivez votre personnalité en quelques mots 😉")
+                        .modifier(CustomStyleText3())
                     
                     TextView(text: $user.description, isEditing: $isEditing)
                     .modifier(CustomStyleTextView())
-                    
                 }
+                    
+                    
+                    
+                
             }
-            .navigationBarTitle(Text("Home"), displayMode: .inline)
+             .navigationBarTitle(Text("Localisation & Description"), displayMode: .inline)
             .navigationBarItems(trailing:
                     NavigationLink(destination:  Preferences()){
                                    Text("Next").multilineTextAlignment(.trailing)
