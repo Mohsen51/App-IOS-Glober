@@ -78,8 +78,7 @@ struct HomePage: View {
 
 struct Home: View {
     
-    
-    
+
     @EnvironmentObject var viewRoot:ViewRouter
     
    

@@ -15,7 +15,9 @@ struct CustomStyleTextView: ViewModifier {
         content
             .border(Color(red: 236/255, green: 236/255, blue:236/255), width: 5)
             .frame(height:300)
+            .cornerRadius(10)
             .padding(.bottom,200)
+        
     }
 }
 
@@ -70,6 +72,38 @@ struct CustomStyleText2: ViewModifier {
 extension View {
     func titleText2() -> some View {
         self.modifier(CustomStyleText2())
+    }
+}
+// -------------------- Montserrat Medium ------------------
+struct CustomStyleText3: ViewModifier {
+
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("MontserratAlternates-Medium", size: 13))
+
+    }
+}
+
+extension View {
+    func titleText3() -> some View {
+        self.modifier(CustomStyleText3())
+    }
+}
+// -------------------- Montserrat Extra Light ------------------
+struct CustomStyleText4: ViewModifier {
+
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("Montserrat-ExtraLight", size: 10))
+
+    }
+}
+
+extension View {
+    func titleText4() -> some View {
+        self.modifier(CustomStyleText4())
     }
 }
 
