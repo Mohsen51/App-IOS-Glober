@@ -13,17 +13,17 @@ struct ExtraInfoUser: View {
     @EnvironmentObject var viewRoot:ViewRouter
     @EnvironmentObject var user:User
     @State private var isSheet:Bool = false
-    var results:ProfilResultsExtraInfo
+    var results:FullProfil
     @State var languages:[UserLanguages]  = []
     var userid:Int
   
     
-    init(data:ProfilResultsExtraInfo,userid:Int){
+    init(data:FullProfil,userid:Int){
         results = data
         self.userid = userid
     }
     
-    func formListLanguages(languages:[ProfilResultsExtraInfo.Langue]) -> [UserLanguages]{
+    func formListLanguages(languages:[Langue]) -> [UserLanguages]{
              var tmp = [UserLanguages]()
              for language in languages{
                 tmp.append(languageFormated(language.Language))

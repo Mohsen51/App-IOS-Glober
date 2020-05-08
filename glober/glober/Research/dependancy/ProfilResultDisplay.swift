@@ -38,50 +38,52 @@ struct ProfilResultDisplay: View {
              }
             },
             label: {
-               VStack{
-                HStack{
-                Image("iu")
-                    .resizable()
-                                  .scaledToFit()
-                    .frame(width:100,height:100)
-                    VStack{
-                Text("\(self.data.FirstName)")
-                   
-                Text("\(self.data.Country )")
-                }
-                   
-                Text("\(String(self.data.DateOfBirth)+"year old")")
                 
-                }
+                Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country)
                 
                 HStack{
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Blabla)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Museum)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Party)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Blabla,width: 50,height: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Museum,width: 50,height: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Party,width: 50,height: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50)
                 }
                 
+                }
                
                 
-               }
-               }
+               
+               
            
-             ) .sheet(isPresented:self.$viewRoot.displayContactPage ){
-                Contacter(data: self.data, userid:self.data.UserProfileID,token:self.user.token).environmentObject(self.viewRoot)
-                               }
-             
+             ) .sheet(isPresented:self.$showExtraInfoUser ){
+                VStack{
+                     if   !self.viewRoot.displayContactPage {
+                    DisplayProfileGenerale(data: self.manager.data!.data[0], langues: self.manager.data!.language)
+                    Button(action: {
+                        self.viewRoot.displayContactPage = true
+                                     
+                          
+                      },
+                             label: {Text("Contacter")})
+                        
+                    }
+                     else{
+    
+                           Contacter(data: self.data, userid:self.data.UserProfileID,token:self.user.token).environmentObject(self.viewRoot)
+                    }
+                    
+                    
+                }
+            }
+            
+     
                 .padding(.bottom,30)
-         if self.showExtraInfoUser {
-                            
-            ExtraInfoUser(data: self.manager.data!,userid:self.data.UserProfileID)
-                        }
         
-        
-        }
         
         
       
     }
+}
+
 }
 

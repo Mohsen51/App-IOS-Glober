@@ -56,6 +56,9 @@ struct Research: View {
             ).onAppear{
                 self.viewRoot.displayResearch = false
             }
+            .onDisappear(){
+                self.viewRoot.displayResearch = false
+            }
               
                      .padding(.bottom,30)
                

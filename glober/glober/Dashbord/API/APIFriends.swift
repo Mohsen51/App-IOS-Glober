@@ -60,18 +60,20 @@ class APIFriends: ObservableObject {
                 print(json)
                 }
               
-               let DecodedData = try! JSONDecoder().decode(SocialNetwork.self, from: data)
+             /*  let DecodedData = try! JSONDecoder().decode(SocialNetwork.self, from: data)
                 
                if DecodedData.success == 1 {
                     
                     DispatchQueue.main.async {
+                        var data_without_uuid = DecodedData.data
+                        for var i in (0..<data_without_uuid.count){ data_without_uuid[i].id = UUID(); i+=1}
                         self.contactInfo = DecodedData.data
                         completion(true)
                         
                     }
-                }
+                }*/
                
-               
+                 completion(true)
                
            }.resume()
        
