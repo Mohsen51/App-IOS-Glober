@@ -40,7 +40,7 @@ class APIContacte: ObservableObject {
                 print(json)
                 }
               
-               let DecodedData = try! JSONDecoder().decode(Success.self, from: data)
+            let DecodedData = try! JSONDecoder().decode(Success.self, from: data)
                 
                if DecodedData.success == 1 {
                     

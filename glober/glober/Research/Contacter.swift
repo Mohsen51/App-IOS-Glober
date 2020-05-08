@@ -14,25 +14,30 @@ struct Contacter: View {
     @EnvironmentObject var user:User
     @State var manager = APIContacte()
     @EnvironmentObject var viewRoot:ViewRouter
-    var userProfil:ProfilResultsExtraInfo
+    var userProfil:ProfilResults.Data
+    var userid:Int
+    var token:String
     @State var note:String = ""
     @State var isEditing = false
     
-    init(data:ProfilResultsExtraInfo ){
+    init(data:ProfilResults.Data,userid:Int,token:String){
         self.userProfil = data
+        self.userid = userid
+        self.token = token
         
     }
     
     var body: some View {
         VStack{
-            Text("\(self.userProfil.data[0].FirstName)")
+            Text("\(self.userProfil.FirstName)")
             
-            TextView(text: $note, isEditing: $isEditing)
+            //TextView(text: $note, isEditing: $isEditing)
             .modifier(CustomStyleTextView())
+            TextField("Name",text : $note)
             
             
             Button(
-                action: { self.manager.contacte(urlparam: "http://212.47.232.226/api/users/requestContact",idUser:self.userProfil.data[0].UserId, token: self.user.token,message:self.note){
+                action: { self.manager.contacte(urlparam: "http://212.47.232.226/api/users/search/profile/contact/request",idUser:self.userid, token: self.token,message:self.note){
                     result in
                     
                     if result{

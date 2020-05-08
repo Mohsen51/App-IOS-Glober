@@ -23,6 +23,7 @@ struct Dashbord: View {
            TabView {
             
             MyFriends()
+                
                 .tabItem {
                     Image(systemName: "phone.fill")
                     Text("dashbord")

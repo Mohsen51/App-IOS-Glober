@@ -12,7 +12,7 @@ import SwiftUI
 class APIProfil: ObservableObject {
     
    
-    @Published var data:UserProfile.Data?
+    @Published var data:UserProfile?
   
     
     func get_profil(urlparam:String,token:String,completion: @escaping(Bool) -> Void){
@@ -48,13 +48,14 @@ class APIProfil: ObservableObject {
                if DecodedData.success == 1 {
                     
                     DispatchQueue.main.async {
-                        self.data = DecodedData.data[0]
+                        self.data = DecodedData
+                        
                         completion(true)
                     }
                 }
                 else{
                     DispatchQueue.main.async {
-                       self.data = DecodedData.data[0]
+                       self.data = DecodedData
                        completion(false)
                    }
          

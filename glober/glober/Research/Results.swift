@@ -20,6 +20,7 @@ struct Results: View {
     }
     
     var body: some View {
+      
         VStack{
                         
             List(self.results){
@@ -28,10 +29,12 @@ struct Results: View {
                 ProfilResultDisplay(pref: data)
                 
                 
-                
             }
             
         }
+            
+    
+        
     }
 }
 

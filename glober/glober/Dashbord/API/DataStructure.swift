@@ -20,3 +20,27 @@ struct SocialNetwork :Codable{
         var Identifiant:String
     }
 }
+
+struct Friends: Codable {
+     var success:Int
+       var Friends:[DataUser]
+    var Requests:[DataUser]
+       
+        
+
+}
+    
+    struct DataUser: Identifiable,Codable {
+           var id:UUID?
+           var Country:String
+           var DateOfBirth:Int
+           var FirstName:String
+           var UserProfileID:Int
+    }
+
+struct JustFriends: Codable {
+     var success:Int
+       var data:[DataUser]
+        var code:Int?
+       
+    }

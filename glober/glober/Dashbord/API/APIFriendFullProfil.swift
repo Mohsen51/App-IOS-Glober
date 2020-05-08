@@ -25,7 +25,7 @@ class APIFriendFullProfil: ObservableObject {
               }
           }
     
-    func get_friends(userID:Int,urlparam:String,token:String,completion: @escaping(Bool) -> Void){
+    func get_friends2(userID:Int,urlparam:String,token:String,completion: @escaping(Bool) -> Void){
         
            guard let url = URL(string:urlparam)else{
                    return

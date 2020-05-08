@@ -8,20 +8,20 @@
 
 import SwiftUI
 
-struct DisplayInfo_ButtonContacte: View {
+/*struct DisplayInfo_ButtonContacte: View {
     
-    var data:ProfilResults.Data
+    var data:DataUser
     @EnvironmentObject var user:User
     @EnvironmentObject var viewRoot:ViewRouter
     @State var manager = APIFriends()
       
     
-    init(data:ProfilResults.Data){
+    init(data:DataUser){
         self.data = data
     }
     var body: some View {
          VStack{
-            ProfilResultDisplay(pref: self.data)
+            DisplayExtraInfoUser(data: self.data)
                
                
                Button(action:{
@@ -40,5 +40,5 @@ struct DisplayInfo_ButtonContacte: View {
              
        }
     }
-}
+}*/
 
