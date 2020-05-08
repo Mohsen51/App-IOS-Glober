@@ -58,7 +58,7 @@ struct ExtraInfoUser: View {
                
                 Button(action: {self.viewRoot.displayContactPage = true
                                
-                    self.isSheet = true
+                    
                 },
                        label: {Text("Contacter")})
               

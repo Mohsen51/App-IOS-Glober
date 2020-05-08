@@ -7,11 +7,10 @@
 //
 
 import SwiftUI
-import TextView
 
 struct Contacter: View {
     
-    @EnvironmentObject var user:User
+    
     @State var manager = APIContacte()
     @EnvironmentObject var viewRoot:ViewRouter
     var userProfil:ProfilResults.Data
@@ -29,11 +28,26 @@ struct Contacter: View {
     
     var body: some View {
         VStack{
-            Text("\(self.userProfil.FirstName)")
+           VStack{
+             HStack{
+             Image("iu")
+                 .resizable()
+                               .scaledToFit()
+                 .frame(width:100,height:100)
+                 VStack{
+             Text("\(self.userProfil.FirstName)")
+                
+             Text("\(self.userProfil.Country )")
+             }
+                
+             Text("\(String(self.userProfil.DateOfBirth)+" year old")")
+             
+             }
             
-            //TextView(text: $note, isEditing: $isEditing)
-            .modifier(CustomStyleTextView())
-            TextField("Name",text : $note)
+            }
+            
+            
+            TextField("Note",text : $note)
             
             
             Button(
@@ -49,6 +63,10 @@ struct Contacter: View {
                 
                 label:{Text("Submit")}
             )
+            
+            if self.manager.requestAlreadySent {
+                Text("Request has alreday been sent")
+            }
         }
     }
 }

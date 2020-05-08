@@ -32,14 +32,21 @@ struct DisplayProfile: View {
     var body: some View {
         
         VStack{
+            
+           
         
             if (self.loading == false){
+                HStack{
+                Image("iu")
+                .resizable()
+                              .scaledToFit()
+                .frame(width:100,height:100)
             Text("\(self.manager.data?.data[0].FirstName ?? "no name")")
             //birth of day == Age
              Text("\(self.manager.data?.data[0].DateOfBirth ?? -1)")
             
             Text("\(self.manager.data?.data[0].Gender ?? -1)")
-            
+                }
                 DisplayPreference(imageName: "iu",levelPreference: (self.manager.data?.data[0].Bar)!)
                 DisplayPreference(imageName: "iu",levelPreference: (self.manager.data?.data[0].Blabla)!)
                 DisplayPreference(imageName: "iu",levelPreference: (self.manager.data?.data[0].Museum)!)
@@ -57,6 +64,8 @@ struct DisplayProfile: View {
                 
             }
             }
+            
+            Text("\(self.manager.data?.data[0].About ?? "no about")")
             
             
             Text("").onAppear {

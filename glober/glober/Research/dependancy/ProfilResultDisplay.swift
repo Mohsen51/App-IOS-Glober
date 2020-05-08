@@ -68,13 +68,13 @@ struct ProfilResultDisplay: View {
                }
            
              ) .sheet(isPresented:self.$viewRoot.displayContactPage ){
-                Contacter(data: self.data, userid:self.data.UserProfileID,token:self.user.token)
+                Contacter(data: self.data, userid:self.data.UserProfileID,token:self.user.token).environmentObject(self.viewRoot)
                                }
              
                 .padding(.bottom,30)
          if self.showExtraInfoUser {
                             
-                            ExtraInfoUser(data: self.manager.data!,userid:self.data.UserProfileID)
+            ExtraInfoUser(data: self.manager.data!,userid:self.data.UserProfileID)
                         }
         
         
