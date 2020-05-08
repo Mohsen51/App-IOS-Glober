@@ -13,6 +13,7 @@ class ViewRouter: ObservableObject {
     @Published var page:String = "home"
     @Published var displayResearch:Bool = false
     @Published var displayContactPage:Bool = false
+    @Published var displayContactInfoPage:Bool = false
     
     
     

@@ -14,12 +14,17 @@ struct Dashbord: View {
     @EnvironmentObject var user:User
     @EnvironmentObject var viewRoot:ViewRouter
     
+    @State var manager = APIFriends()
+    @State var manager2 = APIRequestsContact()
+    
     var body: some View {
         VStack{
             
          
            TabView {
-                Text("The content of the second view")
+            
+            //MyFriends(friends: self.manager.data,requestFriends:self.manager2.data)
+            Text("aaaa")
                 .tabItem {
                     Image(systemName: "phone.fill")
                     Text("dashbord")
@@ -35,6 +40,9 @@ struct Dashbord: View {
                    Text("profil")
                  
                  }
+           }.onAppear(){
+            /*self.manager.get_friends(urlparam: "http://212.47.232.226/api/users/api/users/dashboard/friends", token: self.user.token){_ in }
+            self.manager2.get_requests_contact(urlparam: "http://212.47.232.226/api/users/api/users/dashboard/friendsRequest/profile", token: self.user.token){_ in}*/
             }
         }
     }
