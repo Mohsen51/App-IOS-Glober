@@ -17,29 +17,47 @@ struct Preferences: View {
         NavigationView{
             ScrollView{
                 VStack{
+                    HStack{
+                            Text("Sélectionne tes passion 👇🏻")
+                                .padding(.leading, 90)
+                            .modifier(CustomStyleText3())
+                            Spacer()
+                    }.offset(x: 0, y: -20);
+                    
+                    HStack{
+                        Text("Choisit 1 des 3 niveaux proposés par les emojis ")
+                        .modifier(CustomStyleText4())
+                            .padding(.leading, 65)
+                        Spacer()
+                    };
+                        
                         HStack{
                             // preference 1
-                            Preference(choice:0,imageName: "iu")
+                            Preference(choice:0,imageName: "FoodAndDrink")
                             //preference 2
-                            Preference(choice:1,imageName: "Accueil")
+
+                            Preference(choice:1,imageName: "Louvre")
+
                         }
-                    .padding(.bottom,10)
+                        .padding(.bottom,10);
                     
                    
                         HStack{
                             // preference 1
-                            Preference(choice:2,imageName: "AppIcon")
+
+                            Preference(choice:2,imageName: "Party")
                             //preference 2
-                            Preference(choice:3,imageName: "LogoLetter")
+                            Preference(choice:3,imageName: "Sports")
+
                         }
-                     .padding(.bottom,10)
+                        .padding(.bottom,10);
                     
                    
                         HStack{
                             // preference 1
-                            Preference(choice:4,imageName: "iu")
+                            Preference(choice:4,imageName: "Film")
                             //preference 2
-                            Preference(choice:5,imageName: "iu")
+                            Preference(choice:5,imageName: "Photographie")
                     }
                 }
                 .padding(.horizontal,15)
@@ -48,7 +66,7 @@ struct Preferences: View {
                     
           
        }
-        .navigationBarTitle(Text("Preferences"), displayMode: .inline)
+        .navigationBarTitle(Text("Hobbits"), displayMode: .inline)
         .navigationBarItems(trailing:
                       
                    NavigationLink(destination: Profil()){
