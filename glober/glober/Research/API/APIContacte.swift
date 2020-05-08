@@ -11,7 +11,7 @@ import SwiftUI
 
 class APIContacte: ObservableObject {
     
-   
+    @Published var requestAlreadySent:Bool = false
     
     func contacte(urlparam:String,idUser:Int,token:String,message:String,completion: @escaping(Bool) -> Void){
         
@@ -49,6 +49,12 @@ class APIContacte: ObservableObject {
                         
                     }
                 }
+               else{
+                 DispatchQueue.main.async {
+                self.requestAlreadySent = true
+                    completion(true)
+                }
+            }
                
                
                
