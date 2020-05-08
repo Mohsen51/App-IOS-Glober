@@ -16,19 +16,25 @@ struct Results: View {
     
     init(result:[ProfilResults.Data]){
         self.results = result
+        //print(self.results[0].id.uuidString)
     }
     
     var body: some View {
+      
         VStack{
+                        
             List(self.results){
                 data in
-                                
+               
                 ProfilResultDisplay(pref: data)
                 
                 
             }
-            Text("aaa")
+            
         }
+            
+    
+        
     }
 }
 

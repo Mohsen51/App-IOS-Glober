@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33074C0D246583F800B69124 /* DisplayProfilDashbord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33074C0C246583F800B69124 /* DisplayProfilDashbord.swift */; };
 		3358532B2458BC7700351309 /* APIRequestsContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358532A2458BC7700351309 /* APIRequestsContact.swift */; };
 		3358532D2458BE1400351309 /* APIFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358532C2458BE1400351309 /* APIFriends.swift */; };
 		3358532F2458BF0F00351309 /* APIResquestsContactFullProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358532E2458BF0F00351309 /* APIResquestsContactFullProfil.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33074C0C246583F800B69124 /* DisplayProfilDashbord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayProfilDashbord.swift; sourceTree = "<group>"; };
 		3358532A2458BC7700351309 /* APIRequestsContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestsContact.swift; sourceTree = "<group>"; };
 		3358532C2458BE1400351309 /* APIFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFriends.swift; sourceTree = "<group>"; };
 		3358532E2458BF0F00351309 /* APIResquestsContactFullProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResquestsContactFullProfil.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				33A5090C245C4C7000E30F20 /* DisplayExtraInfoFriends.swift */,
+				33074C0C246583F800B69124 /* DisplayProfilDashbord.swift */,
 			);
 			path = dependency;
 			sourceTree = "<group>";
@@ -356,8 +359,8 @@
 		33E08604244894E100AE36F7 /* Profil */ = {
 			isa = PBXGroup;
 			children = (
-				33E24AC6245F23FC0094C0D8 /* dependency */,
 				33E086062448953E00AE36F7 /* DisplayProfile.swift */,
+				33E24AC6245F23FC0094C0D8 /* dependency */,
 				33E086052448951A00AE36F7 /* API */,
 			);
 			path = Profil;
@@ -602,6 +605,7 @@
 				335853312458C36100351309 /* APIFriendFullProfil.swift in Sources */,
 				33E0860F2448AB4D00AE36F7 /* APISearch.swift in Sources */,
 				33E086132448B55E00AE36F7 /* Research.swift in Sources */,
+				33074C0D246583F800B69124 /* DisplayProfilDashbord.swift in Sources */,
 				33CBB102244F5F5300D104DD /* ExtraInfoUser.swift in Sources */,
 				33860BDA243E05A000CA1C41 /* User.swift in Sources */,
 				33A5090D245C4C7000E30F20 /* DisplayExtraInfoFriends.swift in Sources */,
@@ -796,14 +800,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"glober/Preview Content\"";
-				DEVELOPMENT_TEAM = 8K9HHHQRJH;
+				DEVELOPMENT_TEAM = 9STQ54L3SV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = glober/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SwiftUiDevelopper;
+				PRODUCT_BUNDLE_IDENTIFIER = LSDream.glober;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -816,14 +820,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"glober/Preview Content\"";
-				DEVELOPMENT_TEAM = 8K9HHHQRJH;
+				DEVELOPMENT_TEAM = 9STQ54L3SV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = glober/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SwiftUiDevelopper;
+				PRODUCT_BUNDLE_IDENTIFIER = LSDream.glober;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -878,6 +882,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9STQ54L3SV;
 				INFOPLIST_FILE = globerUITests/Info.plist;
@@ -898,6 +903,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9STQ54L3SV;
 				INFOPLIST_FILE = globerUITests/Info.plist;

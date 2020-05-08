@@ -12,7 +12,7 @@ import SwiftUI
 class APIProfil: ObservableObject {
     
    
-    @Published var data:UserProfile.Data?
+    @Published var data:UserProfile?
   
     
     func get_profil(urlparam:String,token:String,completion: @escaping(Bool) -> Void){
@@ -20,15 +20,17 @@ class APIProfil: ObservableObject {
            guard let url = URL(string:urlparam)else{
                    return
                }
-        print(token)
        
-        let JsonBody = try! JSONSerialization.data(withJSONObject: ["aaa":1])
+       
+       
            
            var request =  URLRequest(url:url)
-           request.httpMethod = "POST"
-           request.httpBody = JsonBody
+           request.httpMethod = "GET"
+           
            
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
+           // Authorization Bearer token
+           request.addValue("Bearer "+token,forHTTPHeaderField: "Authorization")
            
            URLSession.shared.dataTask(with: request){(data,response,error) in
                
@@ -46,13 +48,14 @@ class APIProfil: ObservableObject {
                if DecodedData.success == 1 {
                     
                     DispatchQueue.main.async {
-                        self.data = DecodedData.data
+                        self.data = DecodedData
+                        
                         completion(true)
                     }
                 }
                 else{
                     DispatchQueue.main.async {
-                       self.data = DecodedData.data
+                       self.data = DecodedData
                        completion(false)
                    }
          

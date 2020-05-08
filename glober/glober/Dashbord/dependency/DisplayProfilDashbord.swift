@@ -1,19 +1,19 @@
 //
-//  ProfilResultDisplay.swift
+//  DisplayProfilDashbord.swift
 //  glober
 //
-//  Created by Antonin Boulnois on 20/04/2020.
+//  Created by Antonin Boulnois on 08/05/2020.
 //  Copyright © 2020 Antonin Boulnois. All rights reserved.
 //
 
 import SwiftUI
 
-struct ProfilResultDisplay: View {
+struct DisplayProfilDashbord: View {
     
-    var data:ProfilResults.Data
+    var data:DataUser
     @EnvironmentObject var user:User
     
-    init(pref:ProfilResults.Data){
+    init(pref:DataUser){
         self.data = pref
     }
      @EnvironmentObject var viewRoot:ViewRouter
@@ -54,28 +54,20 @@ struct ProfilResultDisplay: View {
                 
                 }
                 
-                HStack{
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Blabla)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Museum)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Party)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar)
-                }
+               
                 
                
                 
                }
                }
            
-             ) .sheet(isPresented:self.$viewRoot.displayContactPage ){
-                Contacter(data: self.data, userid:self.data.UserProfileID,token:self.user.token)
-                               }
+             ) 
              
                 .padding(.bottom,30)
          if self.showExtraInfoUser {
                             
-                            ExtraInfoUser(data: self.manager.data!,userid:self.data.UserProfileID)
-                        }
+            ExtraInfoUser(data: self.manager.data!,userid:self.data.UserProfileID)
+        }
         
         
         }

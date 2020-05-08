@@ -8,24 +8,24 @@
 
 import SwiftUI
 
-struct DisplayInfo_ButtonContacte: View {
+/*struct DisplayInfo_ButtonContacte: View {
     
-    var data:ProfilResults.Data
+    var data:DataUser
     @EnvironmentObject var user:User
     @EnvironmentObject var viewRoot:ViewRouter
     @State var manager = APIFriends()
       
     
-    init(data:ProfilResults.Data){
+    init(data:DataUser){
         self.data = data
     }
     var body: some View {
          VStack{
-            ProfilResultDisplay(pref: self.data)
+            DisplayExtraInfoUser(data: self.data)
                
                
                Button(action:{
-                self.manager.get_social_network_info(userId:self.data.UserId, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token){
+                self.manager.get_social_network_info(userId:self.data.UserProfileID, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token){
         
                                 result in
                                   
@@ -40,5 +40,5 @@ struct DisplayInfo_ButtonContacte: View {
              
        }
     }
-}
+}*/
 

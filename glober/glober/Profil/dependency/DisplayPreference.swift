@@ -16,7 +16,8 @@ struct DisplayPreference: View {
     
     init(imageName:String,levelPreference:Int){
         self.imageName = imageName
-        self.levelPreference = levelPreference
+        self.levelPreference = levelPreference > 2 ? 0 : levelPreference
+          
     }
     
     var body: some View {
@@ -26,7 +27,7 @@ struct DisplayPreference: View {
                Image(self.imageName)
                .resizable()
                .scaledToFit()
-               .frame(width:150,height:150)
+               .frame(width:50,height:50)
                
                 Text(preference[self.levelPreference])
                 .font(.custom("Arial", size: 50))

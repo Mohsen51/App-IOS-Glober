@@ -12,19 +12,21 @@ struct ExtraInfoUser: View {
     
     @EnvironmentObject var viewRoot:ViewRouter
     @EnvironmentObject var user:User
+    @State private var isSheet:Bool = false
     var results:ProfilResultsExtraInfo
     @State var languages:[UserLanguages]  = []
-    
+    var userid:Int
   
     
-    init(data:ProfilResultsExtraInfo){
+    init(data:ProfilResultsExtraInfo,userid:Int){
         results = data
+        self.userid = userid
     }
     
-    func formListLanguages(languages:[String]) -> [UserLanguages]{
+    func formListLanguages(languages:[ProfilResultsExtraInfo.Langue]) -> [UserLanguages]{
              var tmp = [UserLanguages]()
              for language in languages{
-                 tmp.append(languageFormated(language))
+                tmp.append(languageFormated(language.Language))
              }
              return tmp
          }
@@ -36,8 +38,7 @@ struct ExtraInfoUser: View {
     
    
     var body: some View {
-        
-        NavigationView{
+       
             VStack{
                 Text("\(self.results.data[0].About)")
                 
@@ -49,21 +50,26 @@ struct ExtraInfoUser: View {
                       }
                 }.onAppear(){
                     
-                    self.viewRoot.displayContactPage = false
+                   
                 
-                    self.languages = self.formListLanguages(languages: self.results.data[0].Langues)
+                    self.languages = self.formListLanguages(languages: self.results.language)
                 
             }
-            
-                Button(action: {self.viewRoot.displayContactPage = true},
-                   label: {Text("Contacter")})
+               
+                Button(action: {self.viewRoot.displayContactPage = true
+                               
+                    self.isSheet = true
+                },
+                       label: {Text("Contacter")})
+              
+                
+                
+                
+             
         }
-        }
-        .navigationBarItems(trailing:
-            NavigationLink(destination: Contacter(data:self.results),isActive: self.$viewRoot.displayContactPage){
-                                      Text(" ").multilineTextAlignment(.trailing)
-                                  }
-                           )
+        
+        
+       
 }
 }
 

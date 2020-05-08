@@ -35,16 +35,20 @@ struct Preferences: View {
                             // preference 1
                             Preference(choice:0,imageName: "FoodAndDrink")
                             //preference 2
+
                             Preference(choice:1,imageName: "Louvre")
+
                         }
                         .padding(.bottom,10);
                     
                    
                         HStack{
                             // preference 1
+
                             Preference(choice:2,imageName: "Party")
                             //preference 2
                             Preference(choice:3,imageName: "Sports")
+
                         }
                         .padding(.bottom,10);
                     

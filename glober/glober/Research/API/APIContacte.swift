@@ -21,18 +21,18 @@ class APIContacte: ObservableObject {
         
           
          
-            /*
-           let JsonBody = try! JSONSerialization.data(withJSONObject: data )
+            
+        let JsonBody = try! JSONSerialization.data(withJSONObject: ["UserId":idUser,"Message":message] )
            
            var request =  URLRequest(url:url)
            request.httpMethod = "POST"
            request.httpBody = JsonBody
-           
+            request.addValue("Bearer "+token,forHTTPHeaderField: "Authorization")
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
            
           URLSession.shared.dataTask(with: request){(data,response,error) in
                guard let data = data else {return}
-               guard let ReceiveResponse = response else {return}
+             
                
             
                 //debug
@@ -40,7 +40,7 @@ class APIContacte: ObservableObject {
                 print(json)
                 }
               
-               let DecodedData = try! JSONDecoder().decode(Success.self, from: data)
+            let DecodedData = try! JSONDecoder().decode(Success.self, from: data)
                 
                if DecodedData.success == 1 {
                     
@@ -52,7 +52,7 @@ class APIContacte: ObservableObject {
                
                
                
-           }.resume()*/
-        print("it's ok")
+           }.resume()
+        
        }
 }

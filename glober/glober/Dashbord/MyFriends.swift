@@ -13,37 +13,75 @@ struct MyFriends: View {
   
     @EnvironmentObject var user:User
     @EnvironmentObject var viewRoot:ViewRouter
+    @State private var loading:Bool = true
     @State var manager = APIFriends()
+   
+  
     
-    var friends:[ProfilResults.Data]
-    var requestFriends:[ProfilResults.Data]
-    
-    init(friends:[ProfilResults.Data],requestFriends:[ProfilResults.Data]){
-        self.friends = friends
-        self.requestFriends = requestFriends
-    }
     
     var body: some View {
         VStack{
             
             //Friends
          NavigationView{
-            List(self.friends){
-                  data in
-               
-                DisplayInfo_ButtonContacte(data: data)
+            
+            if (!self.loading ){
+          
+                if self.manager.noFriendsNoRequests{
+                    Text("You don't have  friends/requests yet")
+                }
+                if self.manager.noFriends {
+                     VStack{
+                    Text("You don't have  friend yet")
+                    Text("Your requests")
+                    List(self.manager.friendOrRequest!.data){
+                        data in
+                     
+                       DisplayProfilDashbord(pref: data)
+                      }
+                    }
+                }
+                else if self.manager.noFriendRequests{
+                    VStack{
+                    Text("You don't have requests")
+                    Text("Your friends")
+                    List(self.manager.friendOrRequest!.data){
+                      data in
+                        DisplayProfilDashbord(pref: data)
+                    }
+                    }
+                    
+                }
+                else{
+                    VStack{
+                    List(self.manager.data!.Friends){
+                        data in
+                     
+                      DisplayProfilDashbord(pref: data)
+                      }
+                    
+                    List(self.manager.data!.Requests){
+                      data in
+                   
+                     DisplayProfilDashbord(pref: data)
+                    }
+                    }
+                }
             }
             
-            //Requests Friends
-            List(self.requestFriends){
-                data in
+           
+            Text("")
+            .onAppear(){
+                self.manager.get_friends(urlparam: "http://212.47.232.226/api/users/dashboard/friends", token: self.user.token){result in  if result{ self.loading = false
+                    
+                    }}
                 
-                DisplayInfo_ButtonAcceptRefuse(data:data)
-               
-            
+                print("myfriends")
+              
             }
             
-            }
+           
+         }
             .navigationBarItems(trailing:
                 NavigationLink(destination: ContactInfo(result:self.manager.contactInfo),isActive: self.$viewRoot.displayContactInfoPage){
                                Text(" ").multilineTextAlignment(.trailing)

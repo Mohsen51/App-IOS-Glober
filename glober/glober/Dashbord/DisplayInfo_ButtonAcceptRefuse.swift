@@ -8,30 +8,29 @@
 
 import SwiftUI
 
-struct DisplayInfo_ButtonAcceptRefuse: View {
-    var data:ProfilResults.Data
+/*struct DisplayInfo_ButtonAcceptRefuse: View {
+    var data:Data
     @EnvironmentObject var user:User
     @EnvironmentObject var viewRoot:ViewRouter
     @State var manager = APIRequestsContact()
       
     
-    init(data:ProfilResults.Data){
+    init(data:Data){
         self.data = data
     }
     var body: some View {
          VStack{
-            ProfilResultDisplay(pref: self.data)
-               
+            //DisplayProfilDashbord(pref: self.data)
                
                Button(action:{
-                self.manager.get_accept_request(bool:1,userId:self.data.UserId, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token)
+                self.manager.get_accept_request(bool:1,userId:self.data.UserProfileID, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token)
                           },
                               
                               label:{Text("Accept")}
                           )
             
             Button(action:{
-                self.manager.get_accept_request(bool:0,userId:self.data.UserId, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token)
+                self.manager.get_accept_request(bool:0,userId:self.data.UserProfileID, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token)
                                      },
                                          
                                          label:{Text("Refuse")}
@@ -40,5 +39,5 @@ struct DisplayInfo_ButtonAcceptRefuse: View {
        }
     }
 }
-
+*/
 

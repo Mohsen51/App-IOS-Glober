@@ -13,7 +13,7 @@ struct DisplayProfile: View {
     @EnvironmentObject var user:User
     @State var manager = APIProfil()
     @State var languages = [UserLanguages]()
-   
+    @State private var loading:Bool = true
     let genders = ["Man", "Woman", "Prefer not to say"]
     
     let preference = ["👍","👎","😍"]
@@ -22,10 +22,10 @@ struct DisplayProfile: View {
     
     
     
-    func formListLanguages(languages:[String]) -> [UserLanguages]{
+    func formListLanguages(languages:[UserProfile.Langue]?) -> [UserLanguages]{
         var tmp = [UserLanguages]()
-        for language in languages{
-            tmp.append(languageFormated(language))
+        for language in languages!{
+            tmp.append(languageFormated(language.Language))
         }
         return tmp
     }
@@ -33,15 +33,21 @@ struct DisplayProfile: View {
         
         VStack{
         
-            Text("\(self.manager.data?.FirstName ?? "no name")")
+            if (self.loading == false){
+            Text("\(self.manager.data?.data[0].FirstName ?? "no name")")
+            //birth of day == Age
+             Text("\(self.manager.data?.data[0].DateOfBirth ?? -1)")
             
-            Text("\(String(self.manager.data?.Age ?? -1) )")
+            Text("\(self.manager.data?.data[0].Gender ?? -1)")
             
-            Text("\(self.genders[self.manager.data?.Gender ?? 2] )")
+                DisplayPreference(imageName: "iu",levelPreference: (self.manager.data?.data[0].Bar)!)
+                DisplayPreference(imageName: "iu",levelPreference: (self.manager.data?.data[0].Blabla)!)
+                DisplayPreference(imageName: "iu",levelPreference: (self.manager.data?.data[0].Museum)!)
+                DisplayPreference(imageName: "iu",levelPreference: (self.manager.data?.data[0].Party)!)
+                DisplayPreference(imageName: "iu",levelPreference: (self.manager.data?.data[0].Bar)!)
             
-            Text("\(self.manager.data?.FirstName ?? "no name")")
-            
-            List(self.languages){
+        
+           List(self.languages){
                 UserLanguages in
                 VStack{
                    Text("\(UserLanguages.country)")
@@ -50,16 +56,17 @@ struct DisplayProfile: View {
                    }
                 
             }
+            }
             
-            // self.manager.data?.Bar to access Bar value
             
-            Text("aaa").onAppear {
+            Text("").onAppear {
                 
-                self.manager.get_profil(urlparam: "http://212.47.232.226/api/users/profil",token: self.user.token){
+                self.manager.get_profil(urlparam: "http://212.47.232.226/api/users/profile",token: self.user.token){
                     result in
                     
                     if result {
-                         self.languages = self.formListLanguages(languages: self.manager.data?.Langues ?? [""])
+                        self.languages = self.formListLanguages(languages: self.manager.data?.language )
+                        self.loading = false
                     }
                 }
                

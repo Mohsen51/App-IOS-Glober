@@ -15,18 +15,7 @@ class APIRequestsContact: ObservableObject {
     @Published var data:[ProfilResults.Data] = []
     
     
-    struct Encode {
-                   
-                   private var UserId:Int
-                   private var Token:String
-                   private var Response:Int
-        init(userID:Int,token:String,response:Int)
-                   {
-                       self.UserId = userID
-                       self.Token = token
-                    self.Response = response
-                   }
-               }
+   
 
     func get_requests_contact(urlparam:String,token:String,completion: @escaping(Bool) -> Void){
         
@@ -79,14 +68,14 @@ class APIRequestsContact: ObservableObject {
                   }
            
             
-        let data = Encode(userID:userId,token:token,response:bool)
+       
                
-              let JsonBody = try! JSONSerialization.data(withJSONObject: data )
+        let JsonBody = try! JSONSerialization.data(withJSONObject: ["Userid":userId,"Response":bool] )
               
               var request =  URLRequest(url:url)
-              request.httpMethod = "POST"
+              request.httpMethod = "PUT"
               request.httpBody = JsonBody
-              
+              request.addValue("Bearer "+token,forHTTPHeaderField: "Authorization")
               request.setValue("application/json",forHTTPHeaderField: "Content-Type")
               
              URLSession.shared.dataTask(with: request){(data,response,error) in
