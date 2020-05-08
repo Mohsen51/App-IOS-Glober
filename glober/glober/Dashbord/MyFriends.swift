@@ -37,7 +37,7 @@ struct MyFriends: View {
                     List(self.manager.friendOrRequest!.data){
                         data in
                      
-                       DisplayProfilDashbord(pref: data)
+                        DisplayProfilDashbord(pref: data, typeUser: true)
                       }
                     }
                 }
@@ -47,7 +47,7 @@ struct MyFriends: View {
                     Text("Your friends")
                     List(self.manager.friendOrRequest!.data){
                       data in
-                        DisplayProfilDashbord(pref: data)
+                        DisplayProfilDashbord(pref: data, typeUser: false)
                     }
                     }
                     
@@ -57,13 +57,13 @@ struct MyFriends: View {
                     List(self.manager.data!.Friends){
                         data in
                      
-                      DisplayProfilDashbord(pref: data)
+                        DisplayProfilDashbord(pref: data, typeUser: false)
                       }
                     
                     List(self.manager.data!.Requests){
                       data in
                    
-                     DisplayProfilDashbord(pref: data)
+                        DisplayProfilDashbord(pref: data, typeUser: true)
                     }
                     }
                 }
@@ -72,21 +72,18 @@ struct MyFriends: View {
            
             Text("")
             .onAppear(){
+                self.viewRoot.displayResearch = false
                 self.manager.get_friends(urlparam: "http://212.47.232.226/api/users/dashboard/friends", token: self.user.token){result in  if result{ self.loading = false
                     
                     }}
                 
-                print("myfriends")
+               
               
             }
             
            
          }
-            .navigationBarItems(trailing:
-                NavigationLink(destination: ContactInfo(result:self.manager.contactInfo),isActive: self.$viewRoot.displayContactInfoPage){
-                               Text(" ").multilineTextAlignment(.trailing)
-                           }
-                    )
+           
         }
     }
 }

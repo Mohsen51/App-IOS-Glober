@@ -23,7 +23,6 @@ struct Dashbord: View {
            TabView {
             
             MyFriends()
-                
                 .tabItem {
                     Image(systemName: "phone.fill")
                     Text("dashbord")
@@ -39,10 +38,7 @@ struct Dashbord: View {
                    Text("profil")
                  
                  }
-           }.onAppear(){
-           
-            /*self.manager.get_social_network_info(userId:63, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token){ _ in }*/
-            }
+           }
         }
     }
 }

@@ -12,7 +12,7 @@ import SwiftUI
 class APIProfil: ObservableObject {
     
    
-    @Published var data:UserProfile?
+    @Published var data:FullProfil?
   
     
     func get_profil(urlparam:String,token:String,completion: @escaping(Bool) -> Void){
@@ -43,7 +43,7 @@ class APIProfil: ObservableObject {
                 print(json)
                 }
               
-               let DecodedData = try! JSONDecoder().decode(UserProfile.self, from: data)
+               let DecodedData = try! JSONDecoder().decode(FullProfil.self, from: data)
                 
                if DecodedData.success == 1 {
                     
