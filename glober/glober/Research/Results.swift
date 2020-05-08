@@ -13,22 +13,28 @@ struct Results: View {
     @State var manager = APIResearch()
     var results:[ProfilResults.Data]
     @State var showExtraInfoUser = false
-    
+      @EnvironmentObject var viewRoot:ViewRouter
     init(result:[ProfilResults.Data]){
         self.results = result
+        //print(self.results[0].id.uuidString)
     }
     
     var body: some View {
+      
         VStack{
+                        
             List(self.results){
                 data in
-                                
-                ProfilResultDisplay(pref: data)
+               
+                ProfilResultDisplay(pref: data).environmentObject(self.viewRoot)
                 
                 
             }
-            Text("aaa")
+            
         }
+            
+    
+        
     }
 }
 

@@ -15,24 +15,56 @@ struct ProfilResults: Codable {
     var data:[Data]
     
     struct Data: Identifiable,Codable {
-        var id = UUID()
-        var Name:String
-        var UserId:Int
+        var id:UUID?
+        var FirstName:String
+        var UserProfileID:Int
         var Country:String
-        var Age:Int
-        var Preference:[Dict]
+        var DateOfBirth:Int //Age actually
+        var Bar:Int
+        var Blabla:Int
+        var Museum:Int
+        var Party:Int
+        var Sport:Int
     }
     
-    struct Dict: Identifiable,Codable {
-        var id = UUID()
-        var Name:String
-        var Level:Int
-    }
+   
 }
+
+
+
+
 
 struct ProfilResultsExtraInfo: Codable {
     var success:Int
     
+    var data:[Data]
+    var language:[Langue]
+    struct Data: Codable {
+    var FirstName:String
+    var DateOfBirth:Int
+    var Country:String
+    var Gender:Int
+    var Bar:Int
+    var Blabla:Int
+    var Party:Int
+    var Museum:Int
+    var Sport:Int
+    var About:String
+    //var Image:String
+    }
+    
+     struct Langue:Codable {
+           var Language:String
+       }
+    
+}
+
+struct ProfilFriendResultsExtraInfo: Codable {
+    var success:Int
+    
+    var data:[Data]
+    
+    struct Data: Codable {
     var UserId:Int
     var FirstName:String
     var Age:Int
@@ -46,8 +78,12 @@ struct ProfilResultsExtraInfo: Codable {
     var Langues:[String]
     var About:String
     //var Image:String
-   
+    }
     
 }
 
 
+struct HandleCodeEroor: Codable {
+    var success:Int
+    var code:Int?
+}

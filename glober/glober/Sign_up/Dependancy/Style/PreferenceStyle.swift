@@ -15,7 +15,9 @@ struct CustomStyleVStack: ViewModifier {
         content
            .frame(maxWidth:155)
            .clipped()
+
            //.border(Color.red)
+
     }
 }
 

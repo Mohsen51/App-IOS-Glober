@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
         let user = User()
-        let token = Token()
+       
         let viewRoot = ViewRouter()
        
 

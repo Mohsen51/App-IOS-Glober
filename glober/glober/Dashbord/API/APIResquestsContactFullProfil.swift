@@ -1,38 +1,45 @@
 //
-//  APISearch.swift
+//  APIFriendsFullProfil.swift
 //  glober
 //
-//  Created by Antonin Boulnois on 16/04/2020.
+//  Created by Antonin Boulnois on 28/04/2020.
 //  Copyright © 2020 Antonin Boulnois. All rights reserved.
 //
 
 import Foundation
 import SwiftUI
 
-class APIResearch: ObservableObject {
+class APIResquestsContactFullProfil: ObservableObject {
     
     @EnvironmentObject var token:Token
     @Published var data:[ProfilResults.Data] = []
-    @Published var errorLocation:Bool = false
    
+    struct Encode {
+                 
+                 private var UserId:String
+                 private var Token:String
+                 init(userID:String,token:String)
+                 {
+                     self.UserId = userID
+                     self.Token = token
+                 }
+             }
     
-   
-    
-    func get_profils_from_city(city:String,urlparam:String,token:String,completion: @escaping(Bool) -> Void){
+    func get_profils_requests_friend(userID:String,urlparam:String,token:String,completion: @escaping(Bool) -> Void){
         
            guard let url = URL(string:urlparam)else{
                    return
                }
         
+        let  data_to_be_sent = Encode(userID: userID, token: token)
           
-           
+         
             
-        let JsonBody = try! JSONSerialization.data(withJSONObject: ["Location":city] )
+           let JsonBody = try! JSONSerialization.data(withJSONObject: data_to_be_sent )
            
            var request =  URLRequest(url:url)
            request.httpMethod = "POST"
            request.httpBody = JsonBody
-           request.addValue("Bearer "+token,forHTTPHeaderField: "Authorization")
            
            request.setValue("application/json",forHTTPHeaderField: "Content-Type")
            
@@ -45,43 +52,21 @@ class APIResearch: ObservableObject {
                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                 print(json)
                 }
-            
-            let ErrorData = try! JSONDecoder().decode( HandleCodeEroor.self, from: data)
-            
-            if ErrorData.code == 50 {
-                 DispatchQueue.main.async {
-                        self.errorLocation = true
-                        completion(true)
-                                       
-                }
-                print("error locatio")
-            }
-            else{
+              
                let DecodedData = try! JSONDecoder().decode(ProfilResults.self, from: data)
-               
                 
                if DecodedData.success == 1 {
                     
                     DispatchQueue.main.async {
-                       
-                       
-                        var data_without_uuid = DecodedData.data
-                                              
-                            
-                        for var i in (0..<data_without_uuid.count){ data_without_uuid[i].id = UUID(); i+=1}
-                            
-                        self.data = data_without_uuid
-                      
-                        
+                        self.data = DecodedData.data
                         completion(true)
                         
                     }
                 }
-            }
                
                
                
            }.resume()
-        
+       
        }
 }
