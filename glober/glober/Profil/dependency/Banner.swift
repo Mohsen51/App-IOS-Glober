@@ -36,24 +36,48 @@ struct Banner: View {
           HStack{
             Image(self.image)
                  .resizable()
-                  .scaledToFit()
+                 .scaledToFit()
                  .frame(width:100,height:100)
-             Text("\(self.name)")
-             //date == Age
-              Text("\(self.date )")
+                 .clipShape(Circle())
+                 .shadow(radius: 8)
+            Spacer()
+                .frame(width: 20)
+                    VStack{
+                        HStack{
+                            if self.gender != -1 {
+                                Text("\(self.genders[self.gender])")
+                                    .fontWeight(.bold)
+                            }
+                            
+                            if self.country != ""{
+                                Text("\(self.country )")
+                                    .fontWeight(.bold)
+                            }
+                            Text("\(self.name)")
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                        }
+                        Spacer()
+                            .frame(height: 5)
+                        HStack{
+                            Text("\(self.date ) ans")
+                                Spacer()
+                                    .frame(width: 45)
+                        }
+                               
+                        }
+            }.padding(5)
              
-            if self.gender != -1 {
-            Text("\(self.genders[self.gender])")
-                 }
+             
+              
+             
             
-            if self.country != ""{
-                            Text("\(self.country )")
-                       }
+            
+            
             }
         
-    }
+}
         
         
-    }
 
 
