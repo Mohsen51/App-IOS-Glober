@@ -13,10 +13,14 @@ struct DisplayPreference: View {
     let preference = ["👍","👎","😍"]
     var imageName:String
     var levelPreference:Int
+    var width:CGFloat?
+    var heigth:CGFloat?
     
-    init(imageName:String,levelPreference:Int){
+    init(imageName:String,levelPreference:Int,width:Int,height:Int){
         self.imageName = imageName
         self.levelPreference = levelPreference > 2 ? 0 : levelPreference
+        self.width = CGFloat(width)
+        self.heigth = CGFloat(height)
           
     }
     
@@ -27,7 +31,7 @@ struct DisplayPreference: View {
                Image(self.imageName)
                .resizable()
                .scaledToFit()
-               .frame(width:50,height:50)
+                .frame(width:self.width,height:self.heigth)
                
                 Text(preference[self.levelPreference])
                 .font(.custom("Arial", size: 50))
@@ -38,8 +42,3 @@ struct DisplayPreference: View {
     }
 }
 
-struct DisplayPreference_Previews: PreviewProvider {
-    static var previews: some View {
-        DisplayPreference(imageName: "iu", levelPreference: 0)
-    }
-}

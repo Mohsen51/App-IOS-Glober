@@ -28,23 +28,10 @@ struct Contacter: View {
     
     var body: some View {
         VStack{
-           VStack{
-             HStack{
-             Image("iu")
-                 .resizable()
-                               .scaledToFit()
-                 .frame(width:100,height:100)
-                 VStack{
-             Text("\(self.userProfil.FirstName)")
-                
-             Text("\(self.userProfil.Country )")
-             }
-                
-             Text("\(String(self.userProfil.DateOfBirth)+" year old")")
-             
-             }
+           
+            Banner(image: "iu", name: self.userProfil.FirstName, date: self.userProfil.DateOfBirth,country: self.userProfil.Country)
             
-            }
+            
             
             
             TextField("Note",text : $note)
@@ -62,7 +49,9 @@ struct Contacter: View {
             },
                 
                 label:{Text("Submit")}
-            )
+            ).onDisappear(){
+                 self.viewRoot.displayContactPage = false
+            }
             
             if self.manager.requestAlreadySent {
                 Text("Request has alreday been sent")

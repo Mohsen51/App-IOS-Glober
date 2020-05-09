@@ -12,7 +12,7 @@ import SwiftUI
 class APIFriendFullProfil: ObservableObject {
     
     @EnvironmentObject var token:Token
-    @Published var data:[ProfilResultsExtraInfo.Data] = []
+    @Published var data:[DataFullProfil] = []
    
     struct Encode {
               
@@ -53,7 +53,7 @@ class APIFriendFullProfil: ObservableObject {
                 print(json)
                 }
               
-               let DecodedData = try! JSONDecoder().decode(ProfilResultsExtraInfo.self, from: data)
+               let DecodedData = try! JSONDecoder().decode(FullProfil.self, from: data)
                 
                if DecodedData.success == 1 {
                     

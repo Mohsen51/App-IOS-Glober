@@ -12,15 +12,20 @@ struct ContactInfo: View {
     
     @EnvironmentObject var user:User
     @EnvironmentObject var viewRoot:ViewRouter
+    var userInfo:DataFullProfil
     
     var result:[SocialNetwork.Data]
     
-    init(result:[SocialNetwork.Data]){
+    init(result:[SocialNetwork.Data],userinfo:DataFullProfil){
         self.result = result
+        self.userInfo = userinfo
     }
     
     var body: some View {
         VStack{
+            
+        Banner(image: "iu", name: self.userInfo.FirstName, date: self.userInfo.DateOfBirth, country:self.userInfo.Country)
+            
         List(self.result){
             data in
             

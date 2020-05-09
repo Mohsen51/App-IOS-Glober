@@ -15,7 +15,7 @@ struct SocialNetwork :Codable{
     var data:[Data]
     
     struct Data : Identifiable,Codable{
-        var id = UUID()
+        var id:UUID?
         var NetworkName:String
         var Identifiant:String
     }
