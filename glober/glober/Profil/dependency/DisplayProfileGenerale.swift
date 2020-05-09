@@ -51,11 +51,11 @@ struct DisplayProfileGenerale: View {
                    
             Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, gender: self.data.Gender)
             
-            DisplayPreference(imageName: "iu", levelPreference: self.data.Bar,width: 50,height: 50)
-            DisplayPreference(imageName: "iu", levelPreference: self.data.Blabla,width: 50,height: 50)
-            DisplayPreference(imageName: "iu", levelPreference: self.data.Museum,width: 50,height: 50)
-            DisplayPreference(imageName: "iu", levelPreference: self.data.Party,width: 50,height: 50)
-            DisplayPreference(imageName: "iu", levelPreference: self.data.Sport,width: 50,height: 50)
+            DisplayPreference(imageName: "iu", levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 50)
+            DisplayPreference(imageName: "iu", levelPreference: self.data.Blabla,width: 50,height: 50,sizeThumb: 50)
+            DisplayPreference(imageName: "iu", levelPreference: self.data.Museum,width: 50,height: 50,sizeThumb: 50)
+            DisplayPreference(imageName: "iu", levelPreference: self.data.Party,width: 50,height: 50,sizeThumb: 50)
+            DisplayPreference(imageName: "iu", levelPreference: self.data.Sport,width: 50,height: 50,sizeThumb: 50)
            
             List(formListLanguages(languages: self.langues )){
                        UserLanguages in

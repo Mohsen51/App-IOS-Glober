@@ -42,11 +42,11 @@ struct ProfilResultDisplay: View {
                 Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country)
                 
                 HStack{
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Blabla,width: 50,height: 50)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Museum,width: 50,height: 50)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Party,width: 50,height: 50)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Blabla,width: 50,height: 50,sizeThumb: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Museum,width: 50,height: 50,sizeThumb: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Party,width: 50,height: 50,sizeThumb: 50)
+                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 50)
                 }
                 
                 }
