@@ -15,12 +15,14 @@ struct DisplayPreference: View {
     var levelPreference:Int
     var width:CGFloat?
     var heigth:CGFloat?
+    var sizeThumb:CGFloat
     
-    init(imageName:String,levelPreference:Int,width:Int,height:Int){
+    init(imageName:String,levelPreference:Int,width:Int,height:Int,sizeThumb:Int){
         self.imageName = imageName
         self.levelPreference = levelPreference > 2 ? 0 : levelPreference
         self.width = CGFloat(width)
         self.heigth = CGFloat(height)
+        self.sizeThumb = CGFloat(sizeThumb)
           
     }
     
@@ -34,7 +36,7 @@ struct DisplayPreference: View {
                 .frame(width:self.width,height:self.heigth)
                
                 Text(preference[self.levelPreference])
-                .font(.custom("Arial", size: 50))
+                    .font(.custom("Arial", size: self.sizeThumb))
                
             }
                              
