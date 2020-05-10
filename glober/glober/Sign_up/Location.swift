@@ -81,7 +81,7 @@ struct Location: View {
             }
              .navigationBarTitle(Text("Localisation & Description"), displayMode: .inline)
             .navigationBarItems(trailing:
-                    NavigationLink(destination:  Preferences()){
+                    NavigationLink(destination:  Preferences().environmentObject(self.user)){
                                    Text("Next").multilineTextAlignment(.trailing)
                                }
                         )

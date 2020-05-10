@@ -69,7 +69,7 @@ class APIRequestsContact: ObservableObject {
            
             
        
-               
+        print(["Userid":userId,"Response":bool])
         let JsonBody = try! JSONSerialization.data(withJSONObject: ["Userid":userId,"Response":bool] )
               
               var request =  URLRequest(url:url)

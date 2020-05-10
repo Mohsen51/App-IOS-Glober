@@ -52,7 +52,7 @@ struct DisplayProfileGenerale: View {
                 Text("")
                     .padding(20)
                 HStack{
-                    Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, gender: self.data.Gender)
+                    Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country: self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
                 }.offset(x:-60,y:-30)
             }
             HStack{

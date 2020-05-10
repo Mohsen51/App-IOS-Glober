@@ -24,7 +24,7 @@ class APISignIn: ObservableObject {
         let url = URL(string:urlparam)!
            
                
-            print(body)
+           
            let JsonBody = try! JSONSerialization.data(withJSONObject: body)
            
             

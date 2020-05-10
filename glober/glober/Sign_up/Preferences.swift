@@ -33,10 +33,10 @@ struct Preferences: View {
                         
                         HStack{
                             // preference 1
-                            Preference(choice:0,imageName: "FoodAndDrink")
+                            Preference(choice:0,imageName: "FoodAndDrink").environmentObject(self.user)
                             //preference 2
 
-                            Preference(choice:1,imageName: "Louvre")
+                            Preference(choice:1,imageName: "Louvre").environmentObject(self.user)
 
                         }
                         .padding(.bottom,10);
@@ -45,9 +45,9 @@ struct Preferences: View {
                         HStack{
                             // preference 1
 
-                            Preference(choice:2,imageName: "Party")
+                            Preference(choice:2,imageName: "Party").environmentObject(self.user)
                             //preference 2
-                            Preference(choice:3,imageName: "Sports")
+                            Preference(choice:3,imageName: "Sports").environmentObject(self.user)
 
                         }
                         .padding(.bottom,10);
@@ -55,9 +55,9 @@ struct Preferences: View {
                    
                         HStack{
                             // preference 1
-                            Preference(choice:4,imageName: "Film")
+                            Preference(choice:4,imageName: "Film").environmentObject(self.user)
                             //preference 2
-                            Preference(choice:5,imageName: "Photographie")
+                            Preference(choice:5,imageName: "Photographie").environmentObject(self.user)
                     }
                 }
                 .padding(.horizontal,15)
@@ -69,7 +69,7 @@ struct Preferences: View {
         .navigationBarTitle(Text("Hobbits"), displayMode: .inline)
         .navigationBarItems(trailing:
                       
-                   NavigationLink(destination: Profil()){
+                   NavigationLink(destination: Profil().environmentObject(self.user)){
                           Text("Next ").multilineTextAlignment(.trailing)
                       }
                   

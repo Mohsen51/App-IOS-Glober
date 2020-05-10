@@ -33,7 +33,7 @@ class User: ObservableObject {
     @Published var country:String = ""
     @Published var contacts = [UserCoordinates]()
     @Published var description:String = ""
-    @Published var preferences = Array(repeating: 1, count: 6)
+    @Published var preferences = Array(repeating: 0, count: 6)
     @Published var languages = [UserLanguages]()
     @Published var pictureUrl:String = ""
     @Published var password:String = ""
@@ -66,35 +66,40 @@ class User: ObservableObject {
         data["DateOfBirth"] = self.dateOfBirth.millisecondsSince1970
         data["Description"] = self.description
         data["PasswordHash"] = self.password
-        //data["Social_media"] = fetch_social_media()
+        data["Pseudo"] = fetch_social_media_pseudo()
+        data["NetworkName"] = fetch_social_media_name()
         data["City"] = city[self.city]
-        data["Country"] = "France"
+        data["Country"] = self.country
         data["About"] = self.description
         data["Party"] = self.preferences[0]
         data["Museum"] = self.preferences[1]
         data["Bar"] = self.preferences[2]
         data["Blabla"] = self.preferences[3]
         data["Sport"] = self.preferences[4]
+        data["Film"] = self.preferences[5]
         data["Language"] = self.fetch_languages()
-       /* if self.image != nil{
-            data["picture"] = self.encode_image_base64()
-        }*/
         
-      
+        print(data)
+        
     
-       /* for (index, keyValue) in data.enumerated() {
-           print("[\(index)] = \(keyValue)")
-        }*/
         return data
         
     }
     
-    func fetch_social_media() -> [String:String] {
-        var data: [String:String] = [:]
+    func fetch_social_media_pseudo() -> [String] {
+         var data: [String] = []
+        for contact in self.contacts{
+            data.append(contact.identifiant)
+        }
+        return data
+    }
+    
+    func fetch_social_media_name() -> [String] {
+        var data: [String] = []
         let list = ["Facebook","phone", "Snapchat"]
         for contact in self.contacts{
             let name_social_media = list[contact.social_network]
-            data[name_social_media] = contact.identifiant
+            data.append(name_social_media)
         }
         return data
     }
