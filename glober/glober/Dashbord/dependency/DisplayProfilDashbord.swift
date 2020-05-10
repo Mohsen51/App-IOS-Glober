@@ -87,7 +87,7 @@ struct DisplayProfilDashbord: View {
             },
             label: {
                VStack{
-                Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
+                Banner( name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
                 
                }
                }

@@ -19,7 +19,11 @@ struct DisplayLangue: View {
             ForEach(self.languesFormated){
                 result in
                 Text("\(result.country)")
+                 .font(.system(size: 10, weight: .heavy, design: .default))
             }
+            .frame(width: 150)
+            .padding(.trailing, 150)
         }
+          .padding(.bottom, 150)
 }
 }

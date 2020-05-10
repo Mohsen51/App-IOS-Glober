@@ -39,7 +39,7 @@ struct ProfilResultDisplay: View {
             },
             label: {
                 
-                Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
+                Banner( name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
                 
                 HStack{
                 DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 50)
