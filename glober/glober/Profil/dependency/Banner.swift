@@ -29,35 +29,48 @@ struct Banner: View {
         
        }
     var body: some View {
-          HStack{
-            Image(self.image)
-                 .resizable()
-                 .scaledToFit()
-                 .frame(width:100,height:100)
-                 .clipShape(Circle())
-                 .shadow(radius: 8)
-            Spacer()
-                .frame(width: 20)
-                    VStack{
-                        HStack{
-        
-                            Text("\(self.country )")
-                                .fontWeight(.bold)
-                            
-                            Text("\(self.name)")
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.center)
+        VStack{
+            HStack{
+                Text("")
+                .padding(5)
+            }
+            HStack{
+                    
+                    Image(self.image)
+                         .resizable()
+                         .scaledToFit()
+                         .frame(width:100,height:100)
+                         .clipShape(Circle())
+                         .shadow(radius: 8)
+                    
+                            VStack(alignment: .leading, spacing: 5){
+                                HStack{
+                                    Text("\(self.name)")
+                                        .fontWeight(.bold)
+                                        .multilineTextAlignment(.center)
+                                    //if self.gender != -1 {
+                                        //Text("\(self.genders[self.gender])")
+                                            //.fontWeight(.bold)
+                                }
+                                HStack{
+                                        if self.country != ""{
+                                            Text("\(self.country )")
+                                                .fontWeight(.bold)
+                                        }
+                                }
+                                HStack{
+                                    Text("\(self.date ) years")
+                                }
                         }
-                        Spacer()
-                            .frame(height: 5)
-                        HStack{
-                            Text("\(self.date ) ans")
-                                Spacer()
-                                    .frame(width: 45)
-                        }
-                               
-                        }
-            }.padding(5)
+                                       
+                }.padding(.trailing, 200)
+                    .frame(width:380)
+        }
+
+
+
+    }
+    
              
              
               
@@ -65,9 +78,9 @@ struct Banner: View {
             
             
             
-            }
-        
 }
+        
+
         
         
 
