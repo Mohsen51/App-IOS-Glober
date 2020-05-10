@@ -13,7 +13,7 @@ class APIFriends: ObservableObject {
     
     @EnvironmentObject var token:Token
     @Published var data:Friends?
-    @Published var contactInfo:[SocialNetwork.Data] = []
+    @Published var contactInfo:[DataSocial] = []
     @Published var noFriends:Bool = false
     @Published var noFriendRequests:Bool = false
     @Published var noFriendsNoRequests:Bool = false
@@ -60,20 +60,20 @@ class APIFriends: ObservableObject {
                 print(json)
                 }
               
-             /*  let DecodedData = try! JSONDecoder().decode(SocialNetwork.self, from: data)
+              let DecodedData = try! JSONDecoder().decode(SocialNetwork.self, from: data)
                 
                if DecodedData.success == 1 {
                     
                     DispatchQueue.main.async {
-                        var data_without_uuid = DecodedData.data
+                        var data_without_uuid = DecodedData.social
                         for var i in (0..<data_without_uuid.count){ data_without_uuid[i].id = UUID(); i+=1}
-                        self.contactInfo = DecodedData.data
+                        self.contactInfo = data_without_uuid
                         completion(true)
                         
                     }
-                }*/
+                }
                
-                 completion(true)
+                 
                
            }.resume()
        
@@ -107,13 +107,19 @@ class APIFriends: ObservableObject {
         
              
             let DecodedData = try! JSONDecoder().decode(HandleCodeEroor.self, from: data)
-            if (DecodedData.success == 1 && DecodedData.code == 90) {
+             if (DecodedData.success == 1 && DecodedData.code == 50) {
+                DispatchQueue.main.async {
+                        self.noFriendsNoRequests = true
+                          completion(true)
+                     }
+             }
+            else if (DecodedData.success == 1 && DecodedData.code == 90) {
                 let dataResponse = try! JSONDecoder().decode(JustFriends.self, from: data)
                   var data_without_uuid = dataResponse
                   for var i in (0..<data_without_uuid.data.count){ data_without_uuid.data[i].id = UUID(); i+=1}
                 DispatchQueue.main.async {
                     self.friendOrRequest = data_without_uuid
-                  self.noFriendRequests = true
+                    self.noFriendRequests = true
                        completion(true)
                   }
              }

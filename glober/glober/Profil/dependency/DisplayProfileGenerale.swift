@@ -49,11 +49,12 @@ struct DisplayProfileGenerale: View {
     var body: some View {
         ScrollView{
             VStack{
+
                     VStack{
                         Text("")
                             .padding(5)
                         HStack{
-                            Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, gender: self.data.Gender)
+                            Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country: self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
                             .frame(width: 300)
                             .padding(.trailing, 100)
                         }
@@ -154,6 +155,7 @@ struct DisplayProfileGenerale: View {
                 
         }
          
+
 }
 
 }

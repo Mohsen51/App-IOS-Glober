@@ -30,7 +30,7 @@ struct MyFriends: View {
                 if self.manager.noFriendsNoRequests{
                     Text("You don't have  friends/requests yet")
                 }
-                if self.manager.noFriends {
+                else if self.manager.noFriends {
                      VStack{
                     Text("You don't have  friend yet")
                     Text("Your requests")
@@ -54,12 +54,13 @@ struct MyFriends: View {
                 }
                 else{
                     VStack{
+                    Text("Your friends")
                     List(self.manager.data!.Friends){
                         data in
                      
                         DisplayProfilDashbord(pref: data, typeUser: false)
                       }
-                    
+                    Text("Your requests")
                     List(self.manager.data!.Requests){
                       data in
                    

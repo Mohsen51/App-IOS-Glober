@@ -29,7 +29,7 @@ struct Contacter: View {
     var body: some View {
         VStack{
            
-            Banner(image: "iu", name: self.userProfil.FirstName, date: self.userProfil.DateOfBirth,country: self.userProfil.Country)
+            Banner(image: "iu", name: self.userProfil.FirstName, date: self.userProfil.DateOfBirth,country: self.userProfil.Country,gender:self.userProfil.Gender,university: self.userProfil.University ?? "")
             
             
             

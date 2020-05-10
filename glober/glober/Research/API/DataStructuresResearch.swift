@@ -25,6 +25,8 @@ struct ProfilResults: Codable {
         var Museum:Int
         var Party:Int
         var Sport:Int
+        var Gender:Int
+        var University:String?
         
     }
     

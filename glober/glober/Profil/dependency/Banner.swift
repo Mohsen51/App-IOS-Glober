@@ -15,22 +15,18 @@ struct Banner: View {
     var date:Int
     var gender:Int
     var country:String
-    
+    var university:String
      let genders = ["Man", "Woman", "Prefer not to say"]
-    init(image:String,name:String,date:Int,gender:Int){
-        self.image = image
-        self.name = name
-        self.date = date
-        self.gender = gender
-        self.country = ""
-    }
     
-    init(image:String,name:String,date:Int,country:String){
+    
+    init(image:String,name:String,date:Int,country:String,gender:Int,university:String){
            self.image = image
            self.name = name
            self.date = date
            self.country = country
-        self.gender = -1
+        self.gender = gender
+        self.university = university
+        
        }
     var body: some View {
           HStack{
@@ -58,6 +54,7 @@ struct Banner: View {
                                     .fontWeight(.bold)
                             }
                             
+
                         }
                         Spacer()
                             .frame(height: 5)
