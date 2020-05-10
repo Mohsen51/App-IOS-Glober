@@ -39,7 +39,8 @@ struct ProfilResultDisplay: View {
             },
             label: {
                 
-                Banner( name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
+                Banner(  name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
+                .buttonStyle(PlainButtonStyle())
                 
                 HStack{
                 DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 50)
@@ -55,7 +56,9 @@ struct ProfilResultDisplay: View {
                
                
            
-             ) .sheet(isPresented:self.$showExtraInfoUser ){
+             )
+            .buttonStyle(PlainButtonStyle())
+            .sheet(isPresented:self.$showExtraInfoUser ){
                 VStack{
                      if   !self.viewRoot.displayContactPage {
                     DisplayProfileGenerale(data: self.manager.data!.data[0], langues: self.manager.data!.language)
