@@ -16,6 +16,7 @@
 		3358532D2458BE1400351309 /* APIFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358532C2458BE1400351309 /* APIFriends.swift */; };
 		3358532F2458BF0F00351309 /* APIResquestsContactFullProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358532E2458BF0F00351309 /* APIResquestsContactFullProfil.swift */; };
 		335853312458C36100351309 /* APIFriendFullProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335853302458C36100351309 /* APIFriendFullProfil.swift */; };
+		33780BFF24687146008BF345 /* DisplayLangue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33780BFE24687146008BF345 /* DisplayLangue.swift */; };
 		337CD8FF244DF9A3000BF6D8 /* Dashbord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD8FE244DF9A3000BF6D8 /* Dashbord.swift */; };
 		337CD902244E37CE000BF6D8 /* ProfilResultDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD901244E37CE000BF6D8 /* ProfilResultDisplay.swift */; };
 		337CD904244E41B7000BF6D8 /* listLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD903244E41B7000BF6D8 /* listLanguages.swift */; };
@@ -98,6 +99,7 @@
 		3358532C2458BE1400351309 /* APIFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFriends.swift; sourceTree = "<group>"; };
 		3358532E2458BF0F00351309 /* APIResquestsContactFullProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResquestsContactFullProfil.swift; sourceTree = "<group>"; };
 		335853302458C36100351309 /* APIFriendFullProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFriendFullProfil.swift; sourceTree = "<group>"; };
+		33780BFE24687146008BF345 /* DisplayLangue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLangue.swift; sourceTree = "<group>"; };
 		337CD8FE244DF9A3000BF6D8 /* Dashbord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashbord.swift; sourceTree = "<group>"; };
 		337CD901244E37CE000BF6D8 /* ProfilResultDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilResultDisplay.swift; sourceTree = "<group>"; };
 		337CD903244E41B7000BF6D8 /* listLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listLanguages.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				33E24AC7245F24150094C0D8 /* DisplayPreference.swift */,
 				33074C102465C32500B69124 /* DisplayProfileGenerale.swift */,
 				33074C172465F4F300B69124 /* Banner.swift */,
+				33780BFE24687146008BF345 /* DisplayLangue.swift */,
 			);
 			path = dependency;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				33860BC6243DFFF900CA1C41 /* Preferences.swift in Sources */,
 				33860BC2243DFEE600CA1C41 /* ImagePicker.swift in Sources */,
 				33860B90243DFA8600CA1C41 /* SceneDelegate.swift in Sources */,
+				33780BFF24687146008BF345 /* DisplayLangue.swift in Sources */,
 				337CD904244E41B7000BF6D8 /* listLanguages.swift in Sources */,
 				33CBB108244F8A6E00D104DD /* APIContacte.swift in Sources */,
 				337CD902244E37CE000BF6D8 /* ProfilResultDisplay.swift in Sources */,

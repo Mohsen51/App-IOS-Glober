@@ -260,5 +260,149 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1FA39355-779E-4DF5-959B-8E709F765E00"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "glober/Profil/dependency/DisplayProfileGenerale.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "formListLanguages(languages:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E24808BD-0398-4465-9568-5D41C83EFABD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "glober/Profil/dependency/DisplayProfileGenerale.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "formListLanguages(languages:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0D0D89E-3215-42C8-BBA4-B0629535ADE0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "glober/Profil/dependency/DisplayProfileGenerale.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "formListLanguages(languages:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F87041E4-3A87-4F3B-96F6-89457D1B6390"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "glober/Profil/dependency/DisplayLangue.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F87041E4-3A87-4F3B-96F6-89457D1B6390 - 44ff541e2f899393"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "glober.DisplayLangue.body.getter : some"
+                  moduleName = "glober"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antoninboulnois/Documents/efrei/L3_S6/transverse/APP_IOS_Glober/glober/glober/Profil/dependency/DisplayLangue.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "F87041E4-3A87-4F3B-96F6-89457D1B6390 - 68f82320173dd345"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;glober.UserLanguages&gt;, Foundation.UUID, SwiftUI.Text&gt; in glober.DisplayLangue.body.getter : some"
+                  moduleName = "glober"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antoninboulnois/Documents/efrei/L3_S6/transverse/APP_IOS_Glober/glober/glober/Profil/dependency/DisplayLangue.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D00D056-9EE7-4397-ACB1-096CD316B2ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "glober/Profil/dependency/DisplayLangue.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "3D00D056-9EE7-4397-ACB1-096CD316B2ED - 68f82320173dd345"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;glober.UserLanguages&gt;, Foundation.UUID, SwiftUI.Text&gt; in glober.DisplayLangue.body.getter : some"
+                  moduleName = "glober"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antoninboulnois/Documents/efrei/L3_S6/transverse/APP_IOS_Glober/glober/glober/Profil/dependency/DisplayLangue.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "3D00D056-9EE7-4397-ACB1-096CD316B2ED - 4281bdb1a2f41dfa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (glober.UserLanguages) -&gt; SwiftUI.Text in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;glober.UserLanguages&gt;, Foundation.UUID, SwiftUI.Text&gt; in glober.DisplayLangue.body.getter : some"
+                  moduleName = "glober"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antoninboulnois/Documents/efrei/L3_S6/transverse/APP_IOS_Glober/glober/glober/Profil/dependency/DisplayLangue.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
