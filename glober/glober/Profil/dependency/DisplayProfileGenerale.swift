@@ -13,11 +13,13 @@ struct DisplayProfileGenerale: View {
     var data:DataFullProfil
     var langues:[Langue]
     var note:Note
+    var shownote:Bool
     
     init(data:DataFullProfil,langues:[Langue],note:Note){
         self.data = data
         self.langues = langues
         self.note = note
+        self.shownote = true
         
     }
     
@@ -25,6 +27,7 @@ struct DisplayProfileGenerale: View {
            self.data = data
            self.langues = langues
         self.note = Note(Note:"")
+        self.shownote = false
            
        }
        
@@ -47,17 +50,15 @@ struct DisplayProfileGenerale: View {
     
     
     var body: some View {
-        ScrollView{
+        
             VStack{
 
-                    VStack{
+                    VStack(alignment: .leading, spacing: 5){
                         Text("")
                             .padding(5)
                         HStack{
                             Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country: self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
-                            .frame(width: 300)
-                            .padding(.trailing, 100)
-                        }
+                        }.padding(.leading,35)
                     }
                     HStack{
                         Text("Preferences")
@@ -114,15 +115,13 @@ struct DisplayProfileGenerale: View {
                         .font(.largeTitle)
                         .frame(width: 200)
                         .padding(.trailing, 150)
-                    }
+                    }.padding(.bottom, -10)
                     HStack{
                         List(formListLanguages(languages: self.langues )){
                             UserLanguages in
                             VStack{
                                Text("\(UserLanguages.country)")
-                                    .font(.system(size: 20, weight: .heavy, design: .default))
-                                         
-                               
+                                    .font(.system(size: 10, weight: .heavy, design: .default))
                                }
                             
                         }.frame(width: 150)
@@ -135,28 +134,25 @@ struct DisplayProfileGenerale: View {
                             .font(.largeTitle)
                             .frame(width: 200)
                             .padding(.trailing, 140)
-                    }
-                    HStack{
-                            ZStack{
-                                Rectangle()
-                                .border(Color(red: 236/255, green: 236/255, blue:236/255), width: 5)
-                                    .frame(height:200)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(10)
-                                .padding(5)
-                                Text("\(self.data.About ?? "")")
-                                    .foregroundColor(Color.black)
-                            }
                             
                     }
-                    Text("\(self.note.Note ?? ""  )")
+                    HStack{
+                        if (self.shownote){
+                            Text("\(self.note.Note ?? "")")
+                        }else{
+                            Text("\(self.data.About ?? "")")
+                            
+                        }
+                    }
+                    
+                    
                 }
                  
                 
         }
          
 
-}
+
 
 }
 }
