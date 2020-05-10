@@ -14,7 +14,7 @@ struct MyFriends: View {
     @EnvironmentObject var user:User
     @EnvironmentObject var viewRoot:ViewRouter
     @State private var loading:Bool = true
-    @State var manager = APIFriends()
+    @State var managerFriends = APIFriends()
    
   
     
@@ -27,27 +27,27 @@ struct MyFriends: View {
             
             if (!self.loading ){
           
-                if self.manager.noFriendsNoRequests{
+                if self.managerFriends.noFriendsNoRequests{
                     Text("You don't have  friends/requests yet")
                 }
-                else if self.manager.noFriends {
+                else if self.managerFriends.noFriends {
                      VStack{
                     Text("You don't have  friend yet")
                     Text("Your requests")
-                    List(self.manager.friendOrRequest!.data){
+                    List(self.managerFriends.friendOrRequest!.data){
                         data in
                      
-                        DisplayProfilDashbord(pref: data, typeUser: true)
+                        DisplayProfilDashbord(pref: data, typeUser: true).environmentObject(self.managerFriends)
                       }
                     }
                 }
-                else if self.manager.noFriendRequests{
+                else if self.managerFriends.noFriendRequests{
                     VStack{
                     Text("You don't have requests")
                     Text("Your friends")
-                    List(self.manager.friendOrRequest!.data){
+                    List(self.managerFriends.friendOrRequest!.data){
                       data in
-                        DisplayProfilDashbord(pref: data, typeUser: false)
+                        DisplayProfilDashbord(pref: data, typeUser: false).environmentObject(self.managerFriends)
                     }
                     }
                     
@@ -55,16 +55,16 @@ struct MyFriends: View {
                 else{
                     VStack{
                     Text("Your friends")
-                    List(self.manager.data!.Friends){
+                    List(self.managerFriends.data!.Friends){
                         data in
                      
-                        DisplayProfilDashbord(pref: data, typeUser: false)
+                        DisplayProfilDashbord(pref: data, typeUser: false).environmentObject(self.managerFriends)
                       }
                     Text("Your requests")
-                    List(self.manager.data!.Requests){
+                    List(self.managerFriends.data!.Requests){
                       data in
                    
-                        DisplayProfilDashbord(pref: data, typeUser: true)
+                        DisplayProfilDashbord(pref: data, typeUser: true).environmentObject(self.managerFriends)
                     }
                     }
                 }
@@ -74,7 +74,7 @@ struct MyFriends: View {
             Text("")
             .onAppear(){
                 self.viewRoot.displayResearch = false
-                self.manager.get_friends(urlparam: "http://212.47.232.226/api/users/dashboard/friends", token: self.user.token){result in  if result{ self.loading = false
+                self.managerFriends.get_friends(urlparam: "http://212.47.232.226/api/users/dashboard/friends", token: self.user.token){result in  if result{ self.loading = false
                     
                     }}
                 

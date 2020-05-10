@@ -52,17 +52,25 @@ class APIResquestsContactFullProfil: ObservableObject {
                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                 print(json)
                 }
-              
-               let DecodedData = try! JSONDecoder().decode(ProfilResults.self, from: data)
+             
+               let DecodedData = try! JSONDecoder().decode(   HandleCodeEroor.self, from: data)
                 
                if DecodedData.success == 1 {
-                    
+                     let DecodedData = try! JSONDecoder().decode(ProfilResults.self, from: data)
                     DispatchQueue.main.async {
                         self.data = DecodedData.data
                         completion(true)
                         
                     }
                 }
+               else{
+                DispatchQueue.main.async {
+                   
+                    completion(true)
+                    
+                }
+                print("You didn't receive any request from this person")
+            }
                
                
                

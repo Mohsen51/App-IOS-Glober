@@ -22,25 +22,31 @@ struct DisplayProfilDashbord: View {
     @State var showExtraInfoUser = false
     @State var manager = APIResearchExtraInfoUser()
     @State var managerContact = APIRequestsContact()
-     @State var managerFriends = APIFriends()
+     
+     @EnvironmentObject var managerFriends:APIFriends
     
     
     func returnIndexGivenUUIDFromJustFriend(identifiant:UUID) -> Int{
+        if !(self.managerFriends.friendOrRequest == nil){
         for var i in (0..<self.managerFriends.friendOrRequest!.data.count){
             if (self.managerFriends.friendOrRequest!.data[i].id != nil){
                 return i
             }
             i+=1
         }
+        }
+        
         return -1
     }
     
     func returnIndexGivenUUIDFromFriend(identifiant:UUID) -> Int{
+        if !(self.managerFriends.data == nil){
         for var i in (0..<(self.managerFriends.data?.Requests.count)!){
             if (self.managerFriends.data?.Requests[i].id != nil){
                 return i
             }
             i+=1
+        }
         }
         return -1
     }
@@ -92,7 +98,9 @@ struct DisplayProfilDashbord: View {
                }
                }
            
-            ).sheet(isPresented:self.$showExtraInfoUser ){
+            )
+            .buttonStyle(PlainButtonStyle())
+            .sheet(isPresented:self.$showExtraInfoUser ){
                 // Requested Friendship
                 if self.typeUser {
                     VStack{
@@ -102,10 +110,10 @@ struct DisplayProfilDashbord: View {
                             Button(action:{
                                 self.managerContact.get_accept_request(bool:1,userId:self.data.UserProfileID!, urlparam:  "http://212.47.232.226/api/users/dashboard/friendsRequest/profile/response",token:self.user.token)
                                 
-                                // remove from request list without refreshing the page
-                                //self.removeInvitationFromInvitationList()
+                                 //remove from request list without refreshing the page
+                                self.removeInvitationFromInvitationList()
                                 //add to the expected list without refreshing the page
-                                //self.managerFriends.data?.Friends.append(self.data)
+                                self.managerFriends.data?.Friends.append(self.data)
                                           },
                                               
                                               label:{Text("Accept")}
@@ -114,7 +122,7 @@ struct DisplayProfilDashbord: View {
                             Button(action:{
                                 self.managerContact.get_accept_request(bool:0,userId:self.data.UserProfileID!, urlparam:  "http://212.47.232.226/api/users/dashboard/friendsRequest/profile/response",token:self.user.token)
                                 // remove from request list without refreshing the page
-                                //self.removeInvitationFromInvitationList()
+                                self.removeInvitationFromInvitationList()
                                 
                                                      },
                                                          
