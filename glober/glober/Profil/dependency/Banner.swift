@@ -44,6 +44,10 @@ struct Banner: View {
                 .frame(width: 20)
                     VStack{
                         HStack{
+                            Text("\(self.name)")
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                            
                             if self.gender != -1 {
                                 Text("\(self.genders[self.gender])")
                                     .fontWeight(.bold)
@@ -53,9 +57,7 @@ struct Banner: View {
                                 Text("\(self.country )")
                                     .fontWeight(.bold)
                             }
-                            Text("\(self.name)")
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.center)
+                            
                         }
                         Spacer()
                             .frame(height: 5)
