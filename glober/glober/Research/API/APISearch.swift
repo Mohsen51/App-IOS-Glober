@@ -20,6 +20,7 @@ class APIResearch: ObservableObject {
     
     func get_profils_from_city(city:String,urlparam:String,token:String,completion: @escaping(Bool) -> Void){
         
+        self.errorLocation = false
            guard let url = URL(string:urlparam)else{
                    return
                }

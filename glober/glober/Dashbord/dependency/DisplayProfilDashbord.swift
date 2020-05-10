@@ -24,26 +24,70 @@ struct DisplayProfilDashbord: View {
     @State var managerContact = APIRequestsContact()
      @State var managerFriends = APIFriends()
     
+    
+    func returnIndexGivenUUIDFromJustFriend(identifiant:UUID) -> Int{
+        for var i in (0..<self.managerFriends.friendOrRequest!.data.count){
+            if (self.managerFriends.friendOrRequest!.data[i].id != nil){
+                return i
+            }
+            i+=1
+        }
+        return -1
+    }
+    
+    func returnIndexGivenUUIDFromFriend(identifiant:UUID) -> Int{
+        for var i in (0..<(self.managerFriends.data?.Requests.count)!){
+            if (self.managerFriends.data?.Requests[i].id != nil){
+                return i
+            }
+            i+=1
+        }
+        return -1
+    }
+    
+    func removeInvitationFromInvitationList(){
+       var index = self.returnIndexGivenUUIDFromJustFriend(identifiant: self.data.id!)
+       if index == -1 {
+           index =  self.returnIndexGivenUUIDFromFriend(identifiant: self.data.id!)
+           self.managerFriends.data?.Requests.remove(at: index)
+       }
+       else{
+           self.managerFriends.friendOrRequest!.data.remove(at: index)
+       }
+    }
+    
     var body: some View {
       
         VStack{
         Button(
             action: {
              withAnimation {
-                
-                self.manager.get_extra_info_user(userid:self.data.UserProfileID,token: self.user.token, urlparam: "http://212.47.232.226/api/users/dashboard/friends/profile"){
+                // no friends
+                if self.typeUser == false {
+                    self.manager.get_extra_info_user(userid:self.data.UserProfileID!,token: self.user.token, urlparam: "http://212.47.232.226/api/users/dashboard/friends/profile"){
                     result in
                     
                     if result {
                          self.showExtraInfoUser.toggle()
                     }
                 }
+                }
+                //friends
+                else{
+                    self.manager.get_extra_info_user(userid:self.data.UserProfileID!,token: self.user.token, urlparam: "http://212.47.232.226/api/users/dashboard/friendsRequest/profile"){
+                                       result in
+                                       
+                                       if result {
+                                            self.showExtraInfoUser.toggle()
+                                       }
+                                   }
+                }
             
              }
             },
             label: {
                VStack{
-                Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country)
+                Banner(image: "iu", name: self.data.FirstName, date: self.data.DateOfBirth, country:self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
                 
                }
                }
@@ -56,14 +100,22 @@ struct DisplayProfilDashbord: View {
                         
                         HStack{
                             Button(action:{
-                                self.managerContact.get_accept_request(bool:1,userId:self.data.UserProfileID, urlparam:  "http://212.47.232.226/api/users/dashboard/friendsRequest/profile/response",token:self.user.token)
+                                self.managerContact.get_accept_request(bool:1,userId:self.data.UserProfileID!, urlparam:  "http://212.47.232.226/api/users/dashboard/friendsRequest/profile/response",token:self.user.token)
+                                
+                                // remove from request list without refreshing the page
+                                //self.removeInvitationFromInvitationList()
+                                //add to the expected list without refreshing the page
+                                //self.managerFriends.data?.Friends.append(self.data)
                                           },
                                               
                                               label:{Text("Accept")}
                                           )
                             
                             Button(action:{
-                                self.managerContact.get_accept_request(bool:0,userId:self.data.UserProfileID, urlparam:  "http://212.47.232.226/api/users/dashboard/friendsRequest/profile/response",token:self.user.token)
+                                self.managerContact.get_accept_request(bool:0,userId:self.data.UserProfileID!, urlparam:  "http://212.47.232.226/api/users/dashboard/friendsRequest/profile/response",token:self.user.token)
+                                // remove from request list without refreshing the page
+                                //self.removeInvitationFromInvitationList()
+                                
                                                      },
                                                          
                                                          label:{Text("Refuse")}
@@ -78,7 +130,7 @@ struct DisplayProfilDashbord: View {
                         DisplayProfileGenerale(data: self.manager.data!.data[0], langues: self.manager.data!.language,note: (self.manager.data!.note?[0])!)
                         
                      Button(action:{
-                            self.managerFriends.get_social_network_info(userId:self.data.UserProfileID, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token){
+                        self.managerFriends.get_social_network_info(userId:self.data.UserProfileID!, urlparam:  "http://212.47.232.226/api/users/dashboard/friends/contact",token:self.user.token){
                     
                                             result in
                                               

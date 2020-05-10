@@ -18,7 +18,7 @@ struct Submit: View {
     
     var data:[String:Any] = [:]
     
-    @State var picture:Image = Image("iu")
+   
     
     
    
@@ -29,9 +29,7 @@ struct Submit: View {
             
            
             Text("loading").onAppear{
-                if  self.user.image != nil {
-                    self.picture = Image(uiImage: self.user.image!)
-                }
+            
             
                
                 

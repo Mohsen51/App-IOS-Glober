@@ -11,6 +11,7 @@ import SwiftUI
 struct DisplayProfile: View {
     
     @EnvironmentObject var user:User
+    @EnvironmentObject var viewRoot:ViewRouter
     @State var manager = APIProfil()
     
     @State private var loading:Bool = true
@@ -22,6 +23,16 @@ struct DisplayProfile: View {
              if (self.loading == false){
                 DisplayProfileGenerale(data: self.manager.data!.data[0], langues: self.manager.data!.language)
             }
+            
+            Button(action:{
+                self.user.token = ""
+                self.viewRoot.page = "home"
+            }
+                
+                
+                , label: {
+                Text("Deconnection")
+            })
        
            
         

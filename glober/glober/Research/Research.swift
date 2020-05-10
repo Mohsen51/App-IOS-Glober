@@ -14,6 +14,7 @@ struct Research: View {
     @State private var showListPicker = false
     @State private var displayResults = false
     @State private var fetchingData = false
+    @State private var displayErrorLocation = false
     @State var manager = APIResearch()
     @EnvironmentObject var viewRoot:ViewRouter
     @EnvironmentObject var user:User
@@ -28,6 +29,8 @@ struct Research: View {
         NavigationView{
         VStack{
            
+           
+            
             Button(
                  action: {
                   withAnimation {
@@ -59,8 +62,10 @@ struct Research: View {
             .onDisappear(){
                 self.viewRoot.displayResearch = false
             }
+                 .padding(.bottom,30)
+           
               
-                     .padding(.bottom,30)
+                    
                
        
           
@@ -79,19 +84,28 @@ struct Research: View {
                     result in
                     
                     if result {
-                        self.viewRoot.displayResearch = true
+                        
+                        if !self.manager.errorLocation {
+                            self.viewRoot.displayResearch = true
+                            self.displayErrorLocation = false
+                        }
+                        else{
+
+                            self.displayErrorLocation = true
+                                                   }
                     }
                     
                 }
-                
-             
-               
-              
-                
-               
+    
                 
             }, label: { Text("Submit")
             })
+            
+            if self.displayErrorLocation {
+                                 Text("no one at this location")
+                                 }
+            
+         
             
             
                

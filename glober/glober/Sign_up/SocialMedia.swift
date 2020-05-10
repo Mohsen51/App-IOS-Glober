@@ -100,7 +100,7 @@ struct SocialMedia: View {
             .navigationBarTitle("Contact")
              .navigationBarItems(trailing:
                  HStack {
-                  NavigationLink(destination: Submit()){
+                  NavigationLink(destination: Submit().environmentObject(self.user)){
                          Text("Send").multilineTextAlignment(.trailing)
                      }
                    

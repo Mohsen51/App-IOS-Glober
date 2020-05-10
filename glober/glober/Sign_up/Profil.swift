@@ -178,7 +178,7 @@ struct Profil: View {
             .navigationBarItems(trailing:
                   HStack {
                    
-                   NavigationLink(destination: SocialMedia() ){
+                   NavigationLink(destination: SocialMedia().environmentObject(self.user) ){
                           
                           Text("Next").multilineTextAlignment(.trailing)
                    }.disabled(CheckIfFilled())

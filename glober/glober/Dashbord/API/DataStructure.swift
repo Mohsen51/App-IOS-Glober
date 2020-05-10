@@ -12,14 +12,17 @@ import SwiftUI
 struct SocialNetwork :Codable{
     
     var success:Int
-    var data:[Data]
+    var data:[DataUser]
+    var social:[DataSocial]
     
-    struct Data : Identifiable,Codable{
-        var id:UUID?
-        var NetworkName:String
-        var Identifiant:String
-    }
+  
 }
+
+struct DataSocial : Identifiable,Codable{
+      var id:UUID?
+      var NetworkName:String
+      var Pseudo:String
+  }
 
 struct Friends: Codable {
      var success:Int
@@ -35,7 +38,9 @@ struct Friends: Codable {
            var Country:String
            var DateOfBirth:Int
            var FirstName:String
-           var UserProfileID:Int
+           var UserProfileID:Int?
+           var University:String?
+        var Gender:Int
     }
 
 struct JustFriends: Codable {

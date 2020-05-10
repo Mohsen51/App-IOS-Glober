@@ -28,6 +28,8 @@ struct DataFullProfil: Codable {
     var Museum:Int
     var Sport:Int
     var About:String?
+    var University:String?
+    var UserProfileID:Int?
     
 }
 
