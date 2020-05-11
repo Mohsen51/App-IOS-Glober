@@ -59,7 +59,6 @@ struct DisplayProfileGenerale: View {
 
         ScrollView{
             VStack{
-
                     VStack(alignment: .leading, spacing: 5){
                         Text("")
                             .padding(5)
@@ -67,6 +66,22 @@ struct DisplayProfileGenerale: View {
                             Banner( name: self.data.FirstName, date: self.data.DateOfBirth, country: self.data.Country,gender:self.data.Gender,university: self.data.University ?? "")
                         }.padding(.leading,35)
                     }
+                VStack{
+                    HStack{
+                        Text("University")
+                        .fontWeight(.bold)
+                        .font(.largeTitle)
+                        .frame(width: 200)
+                        .padding(.trailing, 179)
+                    }
+                    HStack{
+                        Text("\(self.data.University ?? "")")
+                    }.frame(width:300,height: 20)
+                        .padding(.trailing,150)
+                        .padding(.vertical,5)
+                    .offset(x:-50,y:0)
+                }
+                VStack{
                     HStack{
                         Text("Preferences")
                         .fontWeight(.bold)
@@ -79,7 +94,7 @@ struct DisplayProfileGenerale: View {
                         DisplayPreference(imageName: "FoodAndDrink", levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 20)
                             Spacer()
                             .frame(width: -15)
-                        Text("Restaurants & Bar")
+                        Text("Food & Drinks")
                         .frame(width: 200)
                         .padding(.trailing, 70)
                     }
@@ -87,7 +102,7 @@ struct DisplayProfileGenerale: View {
                         DisplayPreference(imageName: "Photographie", levelPreference: self.data.Blabla,width: 50,height: 50,sizeThumb: 20)
                         Spacer()
                         .frame(width: -15)
-                        Text("Photographie")
+                        Text("Speaking")
                         .frame(width: 200)
                         .padding(.trailing, 70)
                     }
@@ -95,7 +110,7 @@ struct DisplayProfileGenerale: View {
                         DisplayPreference(imageName: "Louvre", levelPreference: self.data.Museum,width: 50,height: 50,sizeThumb: 20)
                         Spacer()
                         .frame(width: -15)
-                        Text("Musée & Sortie")
+                        Text("Museums")
                         .frame(width: 200)
                         .padding(.trailing, 70)
                     }
@@ -126,6 +141,8 @@ struct DisplayProfileGenerale: View {
                     HStack{
                           DisplayLangue(languesFormated:self.formListLanguages(languages: self.langues))
                     }
+                }
+
                 VStack{
                     HStack{
                             Text("Description")
@@ -135,13 +152,25 @@ struct DisplayProfileGenerale: View {
                             .padding(.trailing, 140)
                             
                     }
-                    HStack{
-                        if (self.shownote){
-                            Text("\(self.note.Note ?? "")")
-                        }else{
-                            Text("\(self.data.About ?? "")")
-                            
+                    ZStack{
+                        HStack{
+                            Rectangle()
+                                .foregroundColor(Color.white)
+                            .border(Color(red: 236/255, green: 236/255, blue:236/255), width: 2)
+                            .cornerRadius(10)
+                                .frame(width:300,height:150)
+                            .padding(5)
                         }
+                        HStack{
+                            if (self.shownote){
+                                Text("\(self.note.Note ?? "")")
+                            }else{
+                                Text("\(self.data.About ?? "")")
+                                
+                            }
+                        }.frame(width:300,height:100)
+                        .padding(5)
+                        .multilineTextAlignment(.center)
                     }
                     
                     

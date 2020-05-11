@@ -18,19 +18,29 @@ struct Preferences: View {
             ScrollView{
                 VStack{
                     HStack{
-                            Text("Sélectionne tes passion 👇🏻")
-                                .padding(.leading, 90)
+                            Text("Select your passions 👇🏻")
+                                .multilineTextAlignment(.center)
+                                
                             .modifier(CustomStyleText3())
-                            Spacer()
-                    }.offset(x: 0, y: -20);
+                                
+                        
+                    }.offset(x: 0, y: -50);
                     
                     HStack{
-                        Text("Choisit 1 des 3 niveaux proposés par les emojis ")
+                        Text("Choose 1 of the 3 levels proposed by the emojis ")
+                            .multilineTextAlignment(.center)
                         .modifier(CustomStyleText4())
-                            .padding(.leading, 65)
-                        Spacer()
-                    };
+                            .padding(.bottom,30)
                         
+                    }.offset(x: 0, y: -15);
+                    VStack{
+                        HStack{
+                            Text("Food & Drinks")
+                                .offset(x:-15,y:0)
+                            Spacer()
+                                .frame(width:60)
+                            Text("Museums")
+                        }.modifier(CustomStyleText4())
                         HStack{
                             // preference 1
                             Preference(choice:0,imageName: "FoodAndDrink").environmentObject(self.user)
@@ -40,25 +50,42 @@ struct Preferences: View {
 
                         }
                         .padding(.bottom,10);
-                    
-                   
+                    };
+                    VStack{
                         HStack{
-                            // preference 1
+                            Text("Party")
+                                //.offset(x:-20,y:0)
+                            Spacer()
+                                .frame(width:120)
+                            Text("Sports")
+                        }.modifier(CustomStyleText4())
+                        HStack{
+                                // preference 1
 
-                            Preference(choice:2,imageName: "Party").environmentObject(self.user)
-                            //preference 2
-                            Preference(choice:3,imageName: "Sports").environmentObject(self.user)
+                                Preference(choice:2,imageName: "Party").environmentObject(self.user)
+                                //preference 2
+                                Preference(choice:3,imageName: "Sports").environmentObject(self.user)
 
                         }
                         .padding(.bottom,10);
-                    
-                   
+                    };
+                    VStack{
                         HStack{
-                            // preference 1
-                            Preference(choice:4,imageName: "Film").environmentObject(self.user)
-                            //preference 2
-                            Preference(choice:5,imageName: "Photographie").environmentObject(self.user)
+                            Text("Films & Series")
+                                .offset(x:-25,y:0)
+                            Spacer()
+                                .frame(width:60)
+                            Text("Talking")
+                        }.modifier(CustomStyleText4())
+                        HStack{
+                                // preference 1
+                                Preference(choice:4,imageName: "Film").environmentObject(self.user)
+                                //preference 2
+                                Preference(choice:5,imageName: "Photographie").environmentObject(self.user)
+                        }
                     }
+
+                        
                 }
                 .padding(.horizontal,15)
             }
