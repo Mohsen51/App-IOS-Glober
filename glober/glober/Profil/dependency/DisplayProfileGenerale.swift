@@ -99,7 +99,7 @@ struct DisplayProfileGenerale: View {
                         .padding(.trailing, 70)
                     }
                     HStack{
-                        DisplayPreference(imageName: "Photographie", levelPreference: self.data.Blabla,width: 50,height: 50,sizeThumb: 20)
+                        DisplayPreference(imageName: "Speaking", levelPreference: self.data.Blabla,width: 50,height: 50,sizeThumb: 20)
                         Spacer()
                         .frame(width: -15)
                         Text("Speaking")
@@ -127,6 +127,14 @@ struct DisplayProfileGenerale: View {
                         Spacer()
                         .frame(width: -15)
                         Text("Sports")
+                        .frame(width: 200)
+                        .padding(.trailing, 70)
+                    }
+                    HStack{
+                        DisplayPreference(imageName: "Film", levelPreference: self.data.Sport,width: 50,height: 50,sizeThumb: 20)
+                        Spacer()
+                        .frame(width: -15)
+                        Text("Films & Series")
                         .frame(width: 200)
                         .padding(.trailing, 70)
                     }

@@ -29,7 +29,15 @@ struct Research: View {
         NavigationView{
         VStack{
            
-           
+            VStack{
+                Image("LogoLetter")
+                .resizable()
+                    .frame(width : 280.0,height : 90)
+            }.offset(x: 0, y: -240);
+            VStack{
+                Text("Choose your actual country ")
+                
+            }.offset(x:0,y:-50)
             
             Button(
                  action: {
@@ -77,29 +85,42 @@ struct Research: View {
                }
            }
             
-           
-            Button(action: {
-                self.manager.get_profils_from_city(city:self.city[self.location], urlparam: "http://212.47.232.226/api/users/search",token:self.user.token){
-                    
-                    result in
-                    
-                    if result {
-                        
-                        if !self.manager.errorLocation {
-                            self.viewRoot.displayResearch = true
-                            self.displayErrorLocation = false
-                        }
-                        else{
+            VStack{
+                ZStack{
+                            Button(action: {
+                                self.manager.get_profils_from_city(city:self.city[self.location], urlparam: "http://212.47.232.226/api/users/search",token:self.user.token){
+                                    
+                                    result in
+                                    
+                                    if result {
+                                        
+                                        if !self.manager.errorLocation {
+                                            self.viewRoot.displayResearch = true
+                                            self.displayErrorLocation = false
+                                        }
+                                        else{
 
-                            self.displayErrorLocation = true
-                                                   }
-                    }
+                                            self.displayErrorLocation = true
+                                                                   }
+                                    }
+                                    
+                                }
                     
+                                
+                            }) {
+                                Rectangle()
+                                .frame(width: 160, height: 40, alignment: .center)
+                                .cornerRadius(50)
+                                .foregroundColor(.blue)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 50)
+                                    .stroke(Color.black, lineWidth: 2)
+                                )
+                            }
+                            Text("Research")
                 }
-    
-                
-            }, label: { Text("Submit")
-            })
+            }.padding(.top,20)
+
             
             if self.displayErrorLocation {
                                  Text("no one at this location")

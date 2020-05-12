@@ -81,7 +81,7 @@ struct Preferences: View {
                                 // preference 1
                                 Preference(choice:4,imageName: "Film").environmentObject(self.user)
                                 //preference 2
-                                Preference(choice:5,imageName: "Photographie").environmentObject(self.user)
+                                Preference(choice:5,imageName: "Speaking").environmentObject(self.user)
                         }
                     }
 

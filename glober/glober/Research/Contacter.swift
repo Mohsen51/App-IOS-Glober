@@ -42,7 +42,8 @@ struct Contacter: View {
                 }
                 HStack{
                     TextField("Note",text : $note)
-                }.frame(width:270,height:100)
+                        .frame(width:270,height:100)
+                }
                 .padding(5)
                 .multilineTextAlignment(.center)
             }.offset(x:0,y:-50)

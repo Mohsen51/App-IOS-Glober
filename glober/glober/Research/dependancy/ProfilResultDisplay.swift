@@ -43,12 +43,13 @@ struct ProfilResultDisplay: View {
                 .buttonStyle(PlainButtonStyle())
                 
                 HStack{
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 50)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Blabla,width: 50,height: 50,sizeThumb: 50)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Museum,width: 50,height: 50,sizeThumb: 50)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Party,width: 50,height: 50,sizeThumb: 50)
-                DisplayPreference(imageName: "iu",levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 50)
-                }
+                DisplayPreference(imageName: "FoodAndDrink",levelPreference: self.data.Bar,width: 50,height: 50,sizeThumb: 20)
+                DisplayPreference(imageName: "Speaking",levelPreference: self.data.Blabla,width: 50,height: 50,sizeThumb: 20)
+                DisplayPreference(imageName: "Louvre",levelPreference: self.data.Museum,width: 50,height: 50,sizeThumb: 20)
+                DisplayPreference(imageName: "Party",levelPreference: self.data.Party,width: 50,height: 50,sizeThumb: 20)
+                DisplayPreference(imageName: "Sports",levelPreference: self.data.Sport,width: 50,height: 50,sizeThumb: 20)
+                DisplayPreference(imageName: "Film",levelPreference: self.data.Sport,width: 50,height: 50,sizeThumb: 20)
+                }.padding(.trailing,50)
                 
                 }
                
