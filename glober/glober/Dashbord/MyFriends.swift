@@ -51,8 +51,17 @@ struct MyFriends: View {
                        }
                        else if self.managerFriends.noFriends {
                             VStack{
-                           Text("You don't have  friend yet")
-                           Text("Your requests")
+                                VStack{
+                                    Image("LogoLetter")
+                                    .resizable()
+                                        .frame(width : 280.0,height : 90)
+                                }.offset(x: 0, y: -60);
+                                VStack{
+                                   Text("Your requests")
+                                }
+                                VStack{
+                                   Text("You don't have  friend yet")
+                                }
                            List(self.managerFriends.friendOrRequest!.data){
                                data in
                             
@@ -62,8 +71,24 @@ struct MyFriends: View {
                        }
                        else if self.managerFriends.noFriendRequests{
                            VStack{
-                           Text("You don't have requests")
-                           Text("Your friends")
+                            VStack{
+                                Image("LogoLetter")
+                                .resizable()
+                                    .frame(width : 280.0,height : 90)
+                            }.offset(x: 0, y: -60);
+                            VStack{
+                                Text("You don't have any requests 😕")
+                                .fontWeight(.bold)
+                                .font(.system(size: 13))
+                            }.offset(x:0,y:-40)
+                            
+                            VStack{
+                                Text("Your friends")
+                                    .fontWeight(.bold)
+                                    .font(.largeTitle)
+                                    //.padding(5)
+                            }.padding(.trailing, 115)
+ 
                            List(self.managerFriends.friendOrRequest!.data){
                              data in
                                DisplayProfilDashbord(pref: data, typeUser: false).environmentObject(self.managerFriends)
@@ -73,18 +98,37 @@ struct MyFriends: View {
                        }
                        else{
                            VStack{
-                           Text("Your friends")
-                           List(self.managerFriends.data!.Friends){
-                               data in
-                            
-                               DisplayProfilDashbord(pref: data, typeUser: false).environmentObject(self.managerFriends)
-                             }
-                           Text("Your requests")
-                           List(self.managerFriends.data!.Requests){
-                             data in
-                          
-                               DisplayProfilDashbord(pref: data, typeUser: true).environmentObject(self.managerFriends)
-                           }
+                            VStack{
+                                Image("LogoLetter")
+                                .resizable()
+                                    .frame(width : 280.0,height : 90)
+                            }.offset(x: 0, y: -60);
+                            VStack{
+                                VStack{
+                                  Text("Your requests")
+                                    .fontWeight(.bold)
+                                    .font(.largeTitle)
+                                    //.padding(5)
+                                }.padding(.trailing, 100)
+                                 List(self.managerFriends.data!.Requests){
+                                   data in
+                                
+                                     DisplayProfilDashbord(pref: data, typeUser: true).environmentObject(self.managerFriends)
+                                 }
+                                VStack{
+                                    Text("Your friends")
+                                        .fontWeight(.bold)
+                                        .font(.largeTitle)
+                                        //.padding(5)
+                                }.padding(.trailing, 115)
+                                List(self.managerFriends.data!.Friends){
+                                    data in
+                                
+                                    DisplayProfilDashbord(pref: data, typeUser: false).environmentObject(self.managerFriends)
+                                }
+
+                            }.padding(.top,-55)
+                                                       
                            }
                        }
                    }

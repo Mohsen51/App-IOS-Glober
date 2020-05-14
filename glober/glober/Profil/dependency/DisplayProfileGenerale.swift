@@ -145,7 +145,7 @@ struct DisplayProfileGenerale: View {
                         .font(.largeTitle)
                         .frame(width: 200)
                         .padding(.trailing, 150)
-                    }.padding(.bottom, 10)
+                    }.padding(.bottom, 20)
                     HStack{
                           DisplayLangue(languesFormated:self.formListLanguages(languages: self.langues))
                     }

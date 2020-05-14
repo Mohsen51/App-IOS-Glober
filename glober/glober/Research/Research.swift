@@ -35,9 +35,12 @@ struct Research: View {
                     .frame(width : 280.0,height : 90)
             }.offset(x: 0, y: -240);
             VStack{
-                Text("Choose your actual country ")
+                Text("Choose your actual country 📍")
+                .font(.system(size: 16))
+                .fontWeight(.bold)
                 
-            }.offset(x:0,y:-50)
+                
+            }.offset(x:0,y:-100)
             
             Button(
                  action: {
