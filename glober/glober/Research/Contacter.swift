@@ -61,10 +61,20 @@ struct Contacter: View {
                     },
                         
                         label:{
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 160, height: 40, alignment: .center)
+                                    .cornerRadius(50)
+                                    .foregroundColor(.blue)
+                                    .overlay(
+                                     RoundedRectangle(cornerRadius: 50)
+                                     .stroke(Color.black, lineWidth: 2)
+                                     )
+                                Text("Submit")
+                                .foregroundColor(Color.black)
+                            }
                             
-                             Text("Submit")
-                            .foregroundColor(Color.black)
-                                .background(RoundedRectangle(cornerRadius: 4.0).foregroundColor(.blue).frame(width: 160, height: 40, alignment: .center))
+                                    
                             }
                         
                     ).onDisappear(){
