@@ -59,7 +59,7 @@ struct HomePage: View {
                 Button(action : {
                     self.viewRoot.page = "sign_in"
                 }){
-                    Text("Déjà Membre ? Connexion")
+                    Text("Already Member ? Sign in")
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                 }

@@ -80,7 +80,7 @@ struct CustomStyleText3: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.custom("MontserratAlternates-Medium", size: 13))
+            .font(.custom("MontserratAlternates-Medium", size: 17))
 
     }
 }
@@ -96,7 +96,7 @@ struct CustomStyleText4: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.custom("Montserrat-ExtraLight", size: 10))
+            .font(.custom("Montserrat-ExtraLight", size: 15))
 
     }
 }

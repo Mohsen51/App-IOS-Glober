@@ -77,7 +77,7 @@ struct Banner: View {
                                 HStack{
                                     Text("\(self.date ) years")
                                 }
-                        }
+                            }.offset(x:30,y:0)
                                        
                 }.padding(.trailing, 200)
                     .frame(width:380)

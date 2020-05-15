@@ -83,7 +83,7 @@ struct Connection: View {
                             .stroke(Color.black, lineWidth: 2)
                         )
                     }
-                    Text("Connexion")
+                    Text("Sign in")
 
                 }.offset(x: 0, y: 110)
                                     

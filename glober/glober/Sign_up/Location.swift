@@ -33,7 +33,7 @@ struct Location: View {
                         .frame(width : 280.0,height : 90)
                     Spacer()
                     .frame(height: 30)
-                    Text("Merci de renseigner votre ville :")
+                    Text("Please enter your city :")
                         .modifier(CustomStyleText3())
                     Spacer()
                         .frame(height: 20)
@@ -68,8 +68,9 @@ struct Location: View {
                     }
                 };VStack{
                     
-                    Text("Décrivez votre personnalité en quelques mots 😉")
+                    Text("Describe your personnality in few words 😉")
                         .modifier(CustomStyleText3())
+                        .multilineTextAlignment(.center)
                     
                     TextView(text: $user.description, isEditing: $isEditing)
                     .modifier(CustomStyleTextView())
@@ -79,7 +80,7 @@ struct Location: View {
                     
                 
             }
-             .navigationBarTitle(Text("Localisation & Description"), displayMode: .inline)
+             .navigationBarTitle(Text("Location & Description"), displayMode: .inline)
             .navigationBarItems(trailing:
                     NavigationLink(destination:  Preferences().environmentObject(self.user)){
                                    Text("Next").multilineTextAlignment(.trailing)
