@@ -37,7 +37,9 @@ struct Submit: View {
                         result in
                             
                         if result {
+                            if(!self.manager.errorSignUp){
                             self.viewRoot.page = "sign_in"
+                            }
                         }
                         
                     }

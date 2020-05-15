@@ -15,11 +15,14 @@ struct DisplayLangue: View {
         self.languesFormated = languesFormated
     }
     var body: some View {
-        VStack{
+        VStack(){
             ForEach(self.languesFormated){
                 result in
                 Text("\(result.country)")
-                 .font(.system(size: 12, design: .default))
+                    .font(.system(size: 20, design: .default))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+                  
             }
             .frame(width: 150)
             //.padding(.trailing, 210)

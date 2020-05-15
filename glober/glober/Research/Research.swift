@@ -34,6 +34,7 @@ struct Research: View {
                 .resizable()
                     .frame(width : 280.0,height : 90)
             }.offset(x: 0, y: -240);
+            
             VStack{
                 Text("Choose your actual country 📍")
                 .font(.system(size: 16))
@@ -41,7 +42,8 @@ struct Research: View {
                 
                 
             }.offset(x:0,y:-100)
-            
+           
+            VStack{
             Button(
                  action: {
                   withAnimation {
@@ -67,12 +69,7 @@ struct Research: View {
                        
                    }
                
-            ).onAppear{
-                self.viewRoot.displayResearch = false
-            }
-            .onDisappear(){
-                self.viewRoot.displayResearch = false
-            }
+            )
                  .padding(.bottom,30)
            
               
@@ -87,6 +84,7 @@ struct Research: View {
                    }
                }
            }
+            }
             
             VStack{
                 ZStack{
@@ -121,6 +119,7 @@ struct Research: View {
                                 )
                             }
                             Text("Research")
+                    
                 }
             }.padding(.top,20)
 
@@ -136,6 +135,13 @@ struct Research: View {
             
           
             }
+            .onAppear{
+                self.viewRoot.displayResearch = false
+            }
+            .onDisappear(){
+                self.viewRoot.displayResearch = false
+            }
+            
             .navigationBarItems(trailing:
                         NavigationLink(destination: Results(result:self.manager.data),isActive: self.$viewRoot.displayResearch){
                                            Text(" ").multilineTextAlignment(.trailing)

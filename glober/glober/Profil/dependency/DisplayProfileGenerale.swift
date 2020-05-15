@@ -150,14 +150,23 @@ struct DisplayProfileGenerale: View {
                           DisplayLangue(languesFormated:self.formListLanguages(languages: self.langues))
                     }
                 }
-
+                
                 VStack{
                     HStack{
+                         if (self.shownote){
+                            Text("Note")
+                            .fontWeight(.bold)
+                            .font(.largeTitle)
+                            .frame(width: 200)
+                            .padding(.trailing, 140)
+                        }
+                         else{
                             Text("Description")
                             .fontWeight(.bold)
                             .font(.largeTitle)
                             .frame(width: 200)
                             .padding(.trailing, 140)
+                        }
                             
                     }
                     ZStack{

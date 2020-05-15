@@ -50,7 +50,7 @@ class APISignUp : ObservableObject  {
                 
                 DispatchQueue.main.async {
                     self.errorSignUp = true
-                    completion(false)
+                    completion(true)
                 }
             }
             else{
